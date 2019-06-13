@@ -6,11 +6,11 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 03:39:51 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/06/12 13:21:00 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/06/13 22:40:47 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_ls.h"
+#include "ft_ls.h"
 
 t_node		*new_node(char *path) 
 {

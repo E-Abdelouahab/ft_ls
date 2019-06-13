@@ -1,4 +1,4 @@
-/# **************************************************************************** #
+# **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
@@ -6,7 +6,7 @@
 #    By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/05 13:08:42 by ielmoudn          #+#    #+#              #
-#    Updated: 2019/06/13 14:56:28 by ielmoudn         ###   ########.fr        #
+#    Updated: 2019/06/13 22:40:32 by ielmoudn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,21 @@ _END = \x1b[0m
 
 CC = gcc
 NAME = ls
-FILENAMES = main.c
-HEADER_FILE = ./inc/ls.h
+FILENAMES = bt_free.c\
+	get_balance.c\
+	get_height.c\
+	get_name.c\
+	get_options.c\
+	insert_node.c\
+	is_dir.c\
+	left_rotate.c\
+	main.c\
+	max.c\
+	new_node.c\
+	print_type.c\
+	recur.c\
+	right_rotate.c
+HEADER_FILE = ./inc/ft_ls.h
 SRC_DIR = ./src
 OBJ_DIR = ./obj
 INC_DIR = ./inc

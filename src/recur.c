@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/12 16:04:34 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/06/12 22:23:29 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/06/13 22:41:45 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void recur(t_node *root, char *str)
 {
 	DIR *dir;
 	struct dirent *dp;
-	char * file_name;
 	dir = opendir(str);
 	dp=readdir(dir);
 	char *ins_name;
