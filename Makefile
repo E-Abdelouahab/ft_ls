@@ -6,7 +6,7 @@
 #    By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/05 13:08:42 by ielmoudn          #+#    #+#              #
-#    Updated: 2019/06/13 22:40:32 by ielmoudn         ###   ########.fr        #
+#    Updated: 2019/06/15 20:06:02 by ielmoudn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,11 +19,12 @@ _BOLD = \x1b[1m
 _END = \x1b[0m
 
 CC = gcc
-NAME = ls
+NAME = my_ls
 FILENAMES = bt_free.c\
 	get_balance.c\
 	get_height.c\
-	get_name.c\
+	get_dname.c\
+	get_fname.c\
 	get_options.c\
 	insert_node.c\
 	is_dir.c\
@@ -33,7 +34,10 @@ FILENAMES = bt_free.c\
 	new_node.c\
 	print_type.c\
 	recur.c\
-	right_rotate.c
+	right_rotate.c\
+	inorder_print.c\
+	recall.c\
+	inorder_dprint.c
 HEADER_FILE = ./inc/ft_ls.h
 SRC_DIR = ./src
 OBJ_DIR = ./obj

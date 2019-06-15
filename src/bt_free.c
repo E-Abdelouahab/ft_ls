@@ -6,11 +6,11 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/12 22:21:23 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/06/12 22:22:57 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/06/14 11:29:49 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_ls.h"
+#include "../inc/ft_ls.h"
 
 void free_tree(t_node *node)
 {

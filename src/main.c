@@ -6,19 +6,21 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/10 23:33:05 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/06/12 22:49:12 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/06/15 22:16:43 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_ls.h"
+#include "../inc/ft_ls.h"
 
 int main(int ac, char **av)
 {
 	if (ac < 0)
 		return 0;
-	t_node *tree;
 
-	tree = NULL;
-	recur(tree, av[1]);
+	t_node	*tree;
+
+	tree = new_node(av[1], av[1]);
+
+	recur(tree);
 	return 0;
 }

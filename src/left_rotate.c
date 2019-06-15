@@ -6,11 +6,11 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 05:15:51 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/05/15 05:29:39 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/06/14 11:35:44 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_ls.h"
+#include "../inc/ft_ls.h"
 
 t_node		*left_rotate(t_node *x) 
 {

@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by ********          #+#    #+#             */
-/*   Updated: 2019/06/01 05:43:42 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/06/15 12:39:26 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	size;
 
 	if (s1 && s2)
-		size = (size_t)(ft_strlen((char*)s1) + ft_strlen((char*)s2));
+		size = (size_t)(ft_strlen((char*)s1) + ft_strlen((char*)s2) + 1);
 	else if (s1)
-		size = (size_t)(ft_strlen((char*)s1));
+		size = (size_t)(ft_strlen((char*)s1) + 1);
 	else if (s2)
-		size = (size_t)(ft_strlen((char*)s2));
+		size = (size_t)(ft_strlen((char*)s2) + 1);
 	else
 		return (NULL);
 	if (!(result = ft_memalloc(size)))

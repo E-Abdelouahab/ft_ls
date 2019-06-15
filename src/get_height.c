@@ -6,11 +6,11 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 03:23:17 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/05/15 05:30:02 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/06/14 11:32:29 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_ls.h"
+#include "../inc/ft_ls.h"
 
 int		height(t_node *node)
 {

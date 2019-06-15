@@ -6,21 +6,21 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 03:39:51 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/06/13 22:40:47 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/06/15 19:46:51 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_ls.h"
+#include "../inc/ft_ls.h"
 
-t_node		*new_node(char *path) 
+t_node		*new_node(char *name, char *path) 
 {
 	t_node	*node;
 
-	node = (t_node*)malloc(sizeof(node));
-	node->name = path;
+	node = (t_node*)malloc(sizeof(t_node));
+	node->name = name;
+	node->path = path;
 	node->left = NULL;
 	node->right = NULL;
 	node->height = 1;
-	// new node is initially added at leaf 
 	return(node);
 }

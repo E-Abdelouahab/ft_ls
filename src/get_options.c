@@ -6,11 +6,11 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/11 12:46:31 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/06/12 13:19:06 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/06/14 11:35:30 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_ls.h"
+#include "../inc/ft_ls.h"
 
 int get_options(int argc, char **argv, int *myflags)
 {
