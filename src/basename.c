@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   recall.c                                           :+:      :+:    :+:   */
+/*   basename.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/15 16:52:22 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/06/15 23:15:16 by ielmoudn         ###   ########.fr       */
+/*   Created: 2019/06/18 15:23:08 by ielmoudn          #+#    #+#             */
+/*   Updated: 2019/06/18 16:52:06 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_ls.h"
 
-void recall(t_node *node) 
+char	*basename(char *str, char c)
 {
-	printf("recall %s : \n", node->name);
-	if (node == NULL)
-		return;
+	char	*last_pos;
 
-	if (node->left != NULL)
-		recur(node->left);
-
-		recur(node);
-
-	if (node->right != NULL)
-		recur(node->right);
-	
-
+	last_pos = 0;
+	while (*str)
+	{
+		if (*str == c)
+			last_pos = (char*)str;
+		++str;
+	}
+	return (last_pos++);
 }

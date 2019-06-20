@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_balance.c                                      :+:      :+:    :+:   */
+/*   f_print.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/15 05:23:38 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/06/14 11:30:06 by ielmoudn         ###   ########.fr       */
+/*   Created: 2019/06/16 13:34:30 by ielmoudn          #+#    #+#             */
+/*   Updated: 2019/06/18 22:13:20 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_ls.h"
 
-int get_balance(t_node *node)
+void	f_print(t_node *head)
 {
-	if (node == NULL) 
-		return 0; 
-	return height(node->left) - height(node->right); 
-} 
+	t_node *current_node = head;
+
+	while ( current_node != NULL)
+	{
+		print_color(current_node->type);
+		printf("%s\t", current_node->name);
+		print_color(0);
+		current_node = current_node->next;
+	}
+		printf("\n\n");
+}

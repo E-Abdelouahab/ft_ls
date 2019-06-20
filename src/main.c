@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/10 23:33:05 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/06/15 22:16:43 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/06/19 23:13:46 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,8 @@ int main(int ac, char **av)
 	if (ac < 0)
 		return 0;
 
-	t_node	*tree;
+	process_args(ac, av);
 
-	tree = new_node(av[1], av[1]);
 
-	recur(tree);
 	return 0;
 }

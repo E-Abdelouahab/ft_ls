@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   preorder_dprint.c                                  :+:      :+:    :+:   */
+/*   d_print.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/15 19:31:49 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/06/15 20:06:20 by ielmoudn         ###   ########.fr       */
+/*   Created: 2019/06/17 16:46:28 by ielmoudn          #+#    #+#             */
+/*   Updated: 2019/06/18 16:15:23 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_ls.h"
 
-void inorder_dprint(t_node *node) 
+void	d_print(t_node *head)
 {
-	if (node == NULL)
-		return;
+	t_node	*current_node = head;
 
-	inorder_dprint(node->left);
-	printf(ANSI_COLOR_BLUE " %s \n" ANSI_COLOR_RESET, node->name);
-	inorder_dprint(node->right);
+	while ( current_node != NULL) {
+		printf(ANSI_COLOR_BLUE"%s  "ANSI_COLOR_RESET, current_node->name);
+		current_node = current_node->next;
+	}
 }

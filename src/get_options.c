@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/11 12:46:31 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/06/14 11:35:30 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/06/20 14:23:31 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,34 @@
 
 int get_options(int argc, char **argv, int *myflags)
 {
-	int i;
+	int			i;
+	static	int	flags;
 
-	i = 1;
-	while (i < argc)
+	if (!myflags)
+		return (flags);
+	i = 0;
+	flags = 0;
+	while (i++ < argc)
 	{
+		if (check_valid_opt(argv[i]) == 2)
+			return i + 1;
+		if (check_valid_opt(argv[i]) == 0)
+			return i;
 		if (check_valid_opt(argv[i]) == 1)
 		{
 			if(if_char(argv[i], 'l'))
-				*myflags |= FLAG_L;
+				flags |= FLAG_L;
 			if(if_char(argv[i], 'R'))
-				*myflags |= FLAG_RCAP;
+				flags |= FLAG_RCAP;
 			if(if_char(argv[i], 'a'))
-				*myflags |= FLAG_A;
+				flags |= FLAG_A;
 			if(if_char(argv[i], 'r'))
-				*myflags |= FLAG_RLOW;
+				flags |= FLAG_RLOW;
 			if(if_char(argv[i], 't'))
-				*myflags |= FLAG_T;
+				flags |= FLAG_T;
 		}
-		else if (check_valid_opt(argv[i]) == 2)
-			return i;
-		i++;
 	}
+	*myflags = flags;
 	return i;
 }
 

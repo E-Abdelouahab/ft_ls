@@ -1,32 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   right_rotate.c                                     :+:      :+:    :+:   */
+/*   copy_lst.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/15 03:53:59 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/06/14 11:36:12 by ielmoudn         ###   ########.fr       */
+/*   Created: 2019/06/17 17:59:52 by ielmoudn          #+#    #+#             */
+/*   Updated: 2019/06/17 18:00:01 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_ls.h"
-
-t_node	*right_rotate(t_node *y)
-{
-	t_node *x;
-	t_node *T2;
-
-	x = y->left;
-	T2 = x->right;
-	// Perform rotation
-	x->right = y;
-	y->left = T2;
-
-// Update heights
-	y->height = max(height(y->left), height(y->right))+1;
-	x->height = max(height(x->left), height(x->right))+1;
-
-	// Return new root
-	return x;
-}

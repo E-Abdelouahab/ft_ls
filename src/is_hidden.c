@@ -1,26 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   new_node.c                                         :+:      :+:    :+:   */
+/*   is_hidden.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/15 03:39:51 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/06/15 19:46:51 by ielmoudn         ###   ########.fr       */
+/*   Created: 2019/06/18 22:57:06 by ielmoudn          #+#    #+#             */
+/*   Updated: 2019/06/19 15:59:14 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_ls.h"
 
-t_node		*new_node(char *name, char *path) 
+int		is_hidden(char *name)
 {
-	t_node	*node;
-
-	node = (t_node*)malloc(sizeof(t_node));
-	node->name = name;
-	node->path = path;
-	node->left = NULL;
-	node->right = NULL;
-	node->height = 1;
-	return(node);
+	if (name[0] == '.')
+		return 1;
+	return 0;
 }

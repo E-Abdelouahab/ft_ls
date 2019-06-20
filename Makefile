@@ -6,7 +6,7 @@
 #    By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/05 13:08:42 by ielmoudn          #+#    #+#              #
-#    Updated: 2019/06/15 20:06:02 by ielmoudn         ###   ########.fr        #
+#    Updated: 2019/06/19 23:14:04 by ielmoudn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,24 +20,21 @@ _END = \x1b[0m
 
 CC = gcc
 NAME = my_ls
-FILENAMES = bt_free.c\
-	get_balance.c\
-	get_height.c\
-	get_dname.c\
-	get_fname.c\
-	get_options.c\
-	insert_node.c\
+FILENAMES = get_options.c\
+	insert_lnode.c\
 	is_dir.c\
-	left_rotate.c\
 	main.c\
-	max.c\
-	new_node.c\
-	print_type.c\
-	recur.c\
-	right_rotate.c\
-	inorder_print.c\
-	recall.c\
-	inorder_dprint.c
+	new_lnode.c\
+	f_print.c\
+	insert_beg.c\
+	get_dname.c\
+	basename.c\
+	get_type.c\
+	print_color.c\
+	read_content.c\
+	is_hidden.c\
+	read_all.c\
+	process_args.c
 HEADER_FILE = ./inc/ft_ls.h
 SRC_DIR = ./src
 OBJ_DIR = ./obj
