@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reccur.c                                           :+:      :+:    :+:   */
+/*   new_argnode.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/19 11:58:45 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/06/22 21:45:55 by ielmoudn         ###   ########.fr       */
+/*   Created: 2019/06/27 15:45:29 by ielmoudn          #+#    #+#             */
+/*   Updated: 2019/06/27 15:48:46 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_ls.h"
 
-void	reccur(t_node *dirs, t_node *copy, int *tracker)
+t_args	*new_argnode(char *arg_name)
 {
-	while (dirs)
-	{
-		copy = new_lnode(dirs->path,dirs->name,dirs->type);
-		read_content(&copy, *tracker + 1);
-		dirs = dirs->next;
-	}
+	t_args *arg;
+
+	if(!(arg = (t_args*)malloc(sizeof(t_args))))
+	return (NULL);
+	arg->name = arg_name;
+	arg->previous = NULL;
+	arg->next = NULL;
+	return(arg);
 }

@@ -6,7 +6,7 @@
 #    By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/05 13:08:42 by ielmoudn          #+#    #+#              #
-#    Updated: 2019/06/19 23:14:04 by ielmoudn         ###   ########.fr        #
+#    Updated: 2019/06/22 21:47:49 by ielmoudn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,8 @@ FILENAMES = get_options.c\
 	read_content.c\
 	is_hidden.c\
 	read_all.c\
-	process_args.c
+	process_args.c\
+	reccur.c
 HEADER_FILE = ./inc/ft_ls.h
 SRC_DIR = ./src
 OBJ_DIR = ./obj

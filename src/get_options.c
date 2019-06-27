@@ -6,21 +6,21 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/11 12:46:31 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/06/20 14:23:31 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/06/24 13:36:26 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_ls.h"
 
-int get_options(int argc, char **argv, int *myflags)
+int get_options(int argc, char **argv, t_info **info)
 {
 	int			i;
 	static	int	flags;
 
-	if (!myflags)
-		return (flags);
+	if (!((*info)->flags))
+		return ((*info)->flags);
 	i = 0;
-	flags = 0;
+	(*info)->flags = 0;
 	while (i++ < argc)
 	{
 		if (check_valid_opt(argv[i]) == 2)
@@ -30,18 +30,18 @@ int get_options(int argc, char **argv, int *myflags)
 		if (check_valid_opt(argv[i]) == 1)
 		{
 			if(if_char(argv[i], 'l'))
-				flags |= FLAG_L;
+				(*info)->flags |= FLAG_L;
 			if(if_char(argv[i], 'R'))
-				flags |= FLAG_RCAP;
+				(*info)->flags |= FLAG_RCAP;
 			if(if_char(argv[i], 'a'))
-				flags |= FLAG_A;
+				(*info)->flags |= FLAG_A;
 			if(if_char(argv[i], 'r'))
-				flags |= FLAG_RLOW;
+				(*info)->flags |= FLAG_RLOW;
 			if(if_char(argv[i], 't'))
-				flags |= FLAG_T;
+				(*info)->flags |= FLAG_T;
 		}
 	}
-	*myflags = flags;
+	(*info)->flags = flags;
 	return i;
 }
 

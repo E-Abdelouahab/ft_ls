@@ -1,12 +1,12 @@
-0/* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   insert_lnode.c                                     :+:      :+:    :+:   */
+/*   insert_argnode.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/15 23:52:24 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/06/22 23:31:00 by ielmoudn         ###   ########.fr       */
+/*   Created: 2019/06/27 16:14:08 by ielmoudn          #+#    #+#             */
+/*   Updated: 2019/06/27 16:25:19 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,19 @@ t_func	get_function(int options)
 	return(NULL);
 }
 
-void	insert_lnode(t_node **head, char *path, char *name, int type)
+void	insert_argnode(t_args **head, t_info *info, char *name)
 {
-	t_node *new_node;
-	t_node *current;
+	t_args *new_node;
+	t_args *current;
 	t_func function;
 
-	new_node = new_lnode(path, name, type);
+	new_node = new_argnode(name);
 	if (*head == NULL)
 	{
 		*head = new_node;
 		return;
 	}
-	function = get_function(options);
+	function = get_function(info->flags);
 
 //if new_node has to be inserted at the beggining of the list 
 	//if (strcoll(path, (*head)->path) < 0)
@@ -44,8 +44,8 @@ void	insert_lnode(t_node **head, char *path, char *name, int type)
 	{
 		{
 			current = *head;
-			while (current->next != NULL && strcoll(current->next->path, 
-				new_node->path) < 0)
+			while (current->next != NULL && function(current->next->name, 
+				new_node->name) < 0)
 				current = current->next;
 			new_node->next = current->next; 
 			if (current->next != NULL)

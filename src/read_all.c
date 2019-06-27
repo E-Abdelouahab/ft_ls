@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/19 16:18:43 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/06/19 16:24:57 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/06/22 21:48:05 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	read_all(t_node **head, int tracker)
 
 	dirs = NULL;
 	all = NULL;
+	copy = NULL;
 	dir = opendir((*head)->path);
 	if (!dir)
 		return;
@@ -42,11 +43,6 @@ void	read_all(t_node **head, int tracker)
 		f_print(all);
 	else
 		printf("\n");
-	while (dirs)
-	{
-		copy = new_lnode(dirs->path,dirs->name,dirs->type);
-		read_content(&copy, tracker + 1);
-		dirs = dirs->next;
-	}
+	reccur(dirs, copy, &tracker);
 	closedir(dir);
 }

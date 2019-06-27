@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_ls.h                                            :+:      :+:    :+:   */
@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/06 12:31:47 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/06/19 23:13:22 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/06/27 15:48:57 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@
 #define BOLD_BLUE		"\x1b[96m"
 
 
-
 // defining flags values
 #define FLAG_L		1
 #define FLAG_RCAP	2
@@ -60,9 +59,16 @@
 
 
 
+//define function type
+typedef int (*t_func)(long,long);
 
-
-
+// defining a structure to store arguments in a sorted way
+typedef struct		s_args
+{
+	char			*name;
+	struct s_args	*previous;
+	struct s_args	*next;
+}					t_args;
 
 // defining a double linked list to store data
 typedef struct		s_node
@@ -74,9 +80,21 @@ typedef struct		s_node
 	struct s_node	*next;
 }					t_node;
 
+// defining filling info structure
+typedef struct		s_info
+{
+	char			*path_tbi;
+	char			*name_tbi;
+	int				*type_tbi;
+	int				flags;
+	
+}					t_info;
+
+
+
+// defining options structure
 
 // functions prototypes 
-int			get_options(int argc, char **argv, int *myflags);
 int			check_valid_opt(char *str);
 int			if_char(char *str, char c);
 bool		is_dir(uint8_t type);
@@ -94,6 +112,11 @@ int			is_hidden(char *name);
 void		read_content(t_node **head, int tracker);
 void		read_all(t_node **head, int tracker);
 void		process_args(int ac, char **av);
+void		reccur(t_node *dirs, t_node *copy, int *tracker);
+int			get_options(int argc, char **argv, t_info **info);
+t_args		fill_args(int ac, char **av);
+t_args		*new_argnode(char *arg_name);
+
 
 
 
