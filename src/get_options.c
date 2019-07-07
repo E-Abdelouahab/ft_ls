@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/11 12:46:31 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/06/24 13:36:26 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/06 12:45:05 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,15 @@
 int get_options(int argc, char **argv, t_info **info)
 {
 	int			i;
-	static	int	flags;
 
-	if (!((*info)->flags))
-		return ((*info)->flags);
 	i = 0;
 	(*info)->flags = 0;
 	while (i++ < argc)
 	{
 		if (check_valid_opt(argv[i]) == 2)
-			return i + 1;
+			return (i + 1);
 		if (check_valid_opt(argv[i]) == 0)
-			return i;
+			return (i);
 		if (check_valid_opt(argv[i]) == 1)
 		{
 			if(if_char(argv[i], 'l'))
@@ -38,11 +35,28 @@ int get_options(int argc, char **argv, t_info **info)
 			if(if_char(argv[i], 'r'))
 				(*info)->flags |= FLAG_RLOW;
 			if(if_char(argv[i], 't'))
-				(*info)->flags |= FLAG_T;
+			{
+				if((*info)->flags & FLAG_SCAP)
+				{
+					(*info)->flags =| FLAG_ST;
+					(*info)->flags &= ~FLAG_SCAP;
+				}
+				else if (!((*info)->flags & FLAG_ST || (*info)->flags & FLAG_TS))
+					(*info)->flags |= FLAG_T;
+			}
+			if(if_char(argv[i], 'S'))
+			{
+				if((*info)->flags & FLAG_T)
+				{
+					(*info)->flags =| FLAG_TS;
+					(*info)->flags &= ~FLAG_T;
+				}
+				else if (!((*info)->flags & FLAG_ST || (*info)->flags & FLAG_TS))
+					(*info)->flags |= FLAG_S;
+			}
 		}
 	}
-	(*info)->flags = flags;
-	return i;
+	return (i);
 }
 
 // i is the index of the first non flag argument.

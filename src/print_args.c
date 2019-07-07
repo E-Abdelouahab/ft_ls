@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reccur.c                                           :+:      :+:    :+:   */
+/*   print_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/19 11:58:45 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/06/22 21:45:55 by ielmoudn         ###   ########.fr       */
+/*   Created: 2019/06/28 21:41:17 by ielmoudn          #+#    #+#             */
+/*   Updated: 2019/06/28 21:42:02 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_ls.h"
 
-void	reccur(t_node *dirs, t_node *copy, int *tracker)
+void	print_args(t_args *args)
 {
-	while (dirs)
+	t_args *current_node = args;
+
+	while ( current_node != NULL)
 	{
-		copy = new_lnode(dirs->path,dirs->name,dirs->type);
-		read_content(&copy, *tracker + 1);
-		dirs = dirs->next;
+		printf("%s\t", current_node->name);
+		current_node = current_node->next;
 	}
+		printf("\n\n");
 }

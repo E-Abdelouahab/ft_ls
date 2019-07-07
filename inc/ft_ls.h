@@ -43,6 +43,9 @@
 #define FLAG_A		4
 #define FLAG_RLOW	8
 #define FLAG_T		16
+#define FLAG_SCAP	32
+#define FLAG_TS		64
+#define FLAG_ST		128
 
 // flags macros
 #define HIDDEN FALSE
@@ -57,10 +60,8 @@
 #define SOCKET		12
 #define FIFO		1
 
+typedef struct		s_info t_info;
 
-
-//define function type
-typedef int (*t_func)(long,long);
 
 // defining a structure to store arguments in a sorted way
 typedef struct		s_args
@@ -80,42 +81,60 @@ typedef struct		s_node
 	struct s_node	*next;
 }					t_node;
 
+//define function type2
+typedef int (*t_func)(const char*, const char*);
+
+//define function type3
+typedef int (*t_func2)(t_args**, t_info*, char*);
+
 // defining filling info structure
-typedef struct		s_info
+struct				s_info
 {
 	char			*path_tbi;
 	char			*name_tbi;
-	int				*type_tbi;
+	int				type_tbi;
 	int				flags;
-	
-}					t_info;
+	int				tracker;
+	t_func			insert_func;
+	t_func2			insert_arg_func;
+	t_func			sort_func;
+	t_func			print_func;
+};
 
 
-
-// defining options structure
 
 // functions prototypes 
 int			check_valid_opt(char *str);
 int			if_char(char *str, char c);
 bool		is_dir(uint8_t type);
-t_node		*new_lnode(char *path, char *name, int type);
-void		insert_lnode(t_node **head, char *path, char *name, int type);
+t_node		*new_lnode(t_info *info);
+int			insert_lnode(const char* head_, const char* info_);
 void		f_print(t_node *head);
 void		d_print(t_node *head);
 void		insert_beg(t_node **head, t_node *node);
 void		recur_all(t_node **head, int tracker);
 char		*get_dname(char *p_name, char *c_name);
 char		*basename(char *str, char c);
-int			get_type(__uint8_t type);
+int			get_type(int type);
 void		print_color(__uint8_t type);
 int			is_hidden(char *name);
-void		read_content(t_node **head, int tracker);
-void		read_all(t_node **head, int tracker);
-void		process_args(int ac, char **av);
+void		read_content(t_node **head, t_info **info);
+void		read_all(t_node **head, t_args **args, t_info **info);
+t_args		*process_args(int ac, char **av);
 void		reccur(t_node *dirs, t_node *copy, int *tracker);
 int			get_options(int argc, char **argv, t_info **info);
 t_args		fill_args(int ac, char **av);
 t_args		*new_argnode(char *arg_name);
+int			insert_argnode(t_args **args, t_info *info, char *name);
+void		init_info(t_info **info);
+int			my_cmp(const char* a, const char* b);
+void		get_function(t_info **info);
+int			insert_argnode_rev(t_args **args, t_info *info, char *name);
+int			insert_lnode_rev(const char* head_, const char* info_);
+void		print_args(t_args *args);
+void		fill_info(t_node *head, t_info **info, struct dirent *dp);
+
+
 
 
 

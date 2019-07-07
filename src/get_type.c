@@ -6,13 +6,13 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/18 19:36:06 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/06/18 22:11:57 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/05 15:30:15 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_ls.h"
 
-int		get_type(__uint8_t type)
+int		get_type(int type)
 {
 	if (type == DT_DIR)
 		return DIRECTORY;

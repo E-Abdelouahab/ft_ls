@@ -6,7 +6,7 @@
 #    By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/05 13:08:42 by ielmoudn          #+#    #+#              #
-#    Updated: 2019/06/22 21:47:49 by ielmoudn         ###   ########.fr        #
+#    Updated: 2019/07/05 20:07:11 by ielmoudn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,9 +33,16 @@ FILENAMES = get_options.c\
 	print_color.c\
 	read_content.c\
 	is_hidden.c\
-	read_all.c\
 	process_args.c\
-	reccur.c
+	get_function.c\
+	print_args.c\
+	fill_info.c\
+	init.c\
+	insert_argnode.c\
+	insert_argnode_rev.c\
+	insert_lnode_rev.c\
+	my_cmp.c\
+	new_argnode.c
 HEADER_FILE = ./inc/ft_ls.h
 SRC_DIR = ./src
 OBJ_DIR = ./obj
@@ -58,7 +65,7 @@ $(NAME): $(LIBFT) $(OBJ)
 	@echo "$(CC) $(_lYELLOW)$(FLAGS)$(_END) $(_lCYAN)$(OBJ)$(_END)\n$(_lGREEN)$(LIBRARIES)$(_END)   -I$(_RED)$(INC_DIR)$(_END)$(_RED)$(INCLUDES)$(_END) -o $(_lBLUE)$(NAME)$(_lEND)$(_RED)\n"
 	@$(CC) $(FLAGS) $(OBJ) $(LIBRARIES) $(INCLUDES) -o $(NAME)
 $(OBJ): $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c $(HEADER_FILE) | $(OBJ_DIR)
-	$(CC) $(FLAGS) -c $< -o $@ -I $(INC_DIR) $(INCLUDES)
+	$(CC) $(FLAGS) -c $< -o $@ -I  $(INC_DIR) $(INCLUDES)
 $(OBJ_DIR):
 	@mkdir $(OBJ_DIR)
 $(LIBFT):

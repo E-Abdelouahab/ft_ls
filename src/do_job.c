@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   do_job.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/10 23:33:05 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/06/28 21:50:12 by ielmoudn         ###   ########.fr       */
+/*   Created: 2019/06/28 21:50:20 by ielmoudn          #+#    #+#             */
+/*   Updated: 2019/07/05 15:16:06 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_ls.h"
 
-int main(int ac, char **av)
+void	do_job(t_info **info, t_args **args)
 {
-	if (ac < 0)
-		return 0;
+	t_node	*node;
 
-	t_args *args;
-
-	args = process_args(ac, av);
-
-	print_args(args);
-
-	return 0;
+	node = NULL;
+	while(*args)
+	{
+		node->path = (*args)->name;
+		read_content(&node, info);
+		(*args) = (*args)->next;
+	}
 }

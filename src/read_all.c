@@ -6,13 +6,13 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/19 16:18:43 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/06/22 21:48:05 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/06/28 23:20:30 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_ls.h"
 
-void	read_all(t_node **head, int tracker)
+void	read_all(t_node **head, t_args **args, t_info **info)
 {
 	DIR			*dir;
 	struct		dirent *dp;
@@ -43,6 +43,6 @@ void	read_all(t_node **head, int tracker)
 		f_print(all);
 	else
 		printf("\n");
-	reccur(dirs, copy, &tracker);
+	reccur(dirs, copy, info);
 	closedir(dir);
 }
