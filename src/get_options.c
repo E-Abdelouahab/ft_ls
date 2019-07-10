@@ -6,15 +6,31 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/11 12:46:31 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/07/06 12:45:05 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/07 19:36:14 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_ls.h"
 
+int in_str(char c, char *flag_str)
+{
+	int i;
+
+	i = 0;
+	while (flag_str[i])
+	{
+		if (flag_str[i] == c)
+			return (i);
+		i++;
+	}
+	return(-1);
+}
+
 int get_options(int argc, char **argv, t_info **info)
 {
 	int			i;
+	int			j;
+	int			checker;
 
 	i = 0;
 	(*info)->flags = 0;
@@ -26,33 +42,21 @@ int get_options(int argc, char **argv, t_info **info)
 			return (i);
 		if (check_valid_opt(argv[i]) == 1)
 		{
-			if(if_char(argv[i], 'l'))
-				(*info)->flags |= FLAG_L;
-			if(if_char(argv[i], 'R'))
-				(*info)->flags |= FLAG_RCAP;
-			if(if_char(argv[i], 'a'))
-				(*info)->flags |= FLAG_A;
-			if(if_char(argv[i], 'r'))
-				(*info)->flags |= FLAG_RLOW;
-			if(if_char(argv[i], 't'))
+			j = 1;
+			while (argv[i][j])
 			{
-				if((*info)->flags & FLAG_SCAP)
+				if ((checker = in_str(argv[i][j], FLAGS_STR)) >= 0)
 				{
-					(*info)->flags =| FLAG_ST;
-					(*info)->flags &= ~FLAG_SCAP;
+					if ((1 << checker) & FLAG_SCAP && !((*info)->flags & FLAG_T))
+						(*info)->flags |= FLAG_SCAP;
+					else if((1 << checker) & FLAG_T && !((*info)->flags & FLAG_SCAP))
+						(*info)->flags |= FLAG_T;
+					else
+						(*info)->flags |= (1 << checker);
 				}
-				else if (!((*info)->flags & FLAG_ST || (*info)->flags & FLAG_TS))
-					(*info)->flags |= FLAG_T;
-			}
-			if(if_char(argv[i], 'S'))
-			{
-				if((*info)->flags & FLAG_T)
-				{
-					(*info)->flags =| FLAG_TS;
-					(*info)->flags &= ~FLAG_T;
-				}
-				else if (!((*info)->flags & FLAG_ST || (*info)->flags & FLAG_TS))
-					(*info)->flags |= FLAG_S;
+				else
+					usage_error(argv[i][j]);
+				j++;
 			}
 		}
 	}

@@ -6,26 +6,25 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/19 16:18:43 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/06/28 23:20:30 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/10 20:47:11 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_ls.h"
 
-void	read_all(t_node **head, t_args **args, t_info **info)
+void	read_all(t_node **head, t_info **info,int tracker)
 {
-	DIR			*dir;
-	struct		dirent *dp;
-	t_node		*dirs;
-	t_node		*all;
-	t_node		*copy;
+	DIR				*dir;
+	struct dirent	*dp;
+	t_node			*dirs;
+	t_node			*all;
+	t_node			*copy;
 
 	dirs = NULL;
 	all = NULL;
-	copy = NULL;
 	dir = opendir((*head)->path);
 	if (!dir)
-		return;
+		return;	
 	if (tracker)
 		printf("%s:\n", (*head)->path);
 	while ((dp = readdir(dir)) != NULL)
@@ -34,15 +33,25 @@ void	read_all(t_node **head, t_args **args, t_info **info)
 			continue;
 		else
 		{
-			insert_lnode(&all,get_dname((*head)->path, dp->d_name),dp->d_name, get_type(dp->d_type));
+			fill_info(info, dp);
+			(*info)->insert_func((char*)(&all), (char*)info);
 			if (is_dir(dp->d_type))
-				insert_lnode(&dirs, get_dname((*head)->path, dp->d_name), dp->d_name, get_type(dp->d_type));
+				(*info)->insert_func((char*)(&dirs), (char*)info);
 		}
 	}
 	if (all)
-		f_print(all);
+		f_print(all, *info);
 	else
 		printf("\n");
-	reccur(dirs, copy, info);
+	if ((*info)->flags & FLAG_RCAP)
+	{
+		while (dirs)
+		{
+			(*info)->path_tbi = (*head)->path;
+			copy = new_lnode(*info);
+			read_content(&copy, info, tracker + 1);
+			dirs = dirs->next;
+		}	
+	}
 	closedir(dir);
 }

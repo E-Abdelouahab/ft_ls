@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/28 00:01:12 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/07/06 12:42:06 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/07 19:20:57 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,6 @@
 
 void	get_function(t_info **info)
 {
-	if ((*info)->flags & FLAG_T)
-		(*info)->sort_func = my_cmp;
-	else if ((*info)->flags & FLAG_SCAP)
-		(*info)->sort_func = my_cmp;
-	else
-		(*info)->sort_func = strcoll;
 	if ((*info)->flags & FLAG_RLOW)
 	{
 		(*info)->insert_arg_func = insert_argnode_rev;
@@ -37,4 +31,3 @@ void	get_function(t_info **info)
 	// 	(*info)->print_func = //normal print
 	
 }
-`

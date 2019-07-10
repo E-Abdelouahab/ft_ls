@@ -6,7 +6,7 @@
 #    By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/05 13:08:42 by ielmoudn          #+#    #+#              #
-#    Updated: 2019/07/05 20:07:11 by ielmoudn         ###   ########.fr        #
+#    Updated: 2019/07/10 14:52:25 by ielmoudn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,12 +37,17 @@ FILENAMES = get_options.c\
 	get_function.c\
 	print_args.c\
 	fill_info.c\
-	init.c\
+	init_info.c\
 	insert_argnode.c\
 	insert_argnode_rev.c\
 	insert_lnode_rev.c\
-	my_cmp.c\
-	new_argnode.c
+	new_argnode.c\
+	usage_error.c\
+	sort_function.c\
+	sort_args_func.c\
+	read_all.c\
+	get_width.c
+
 HEADER_FILE = ./inc/ft_ls.h
 SRC_DIR = ./src
 OBJ_DIR = ./obj

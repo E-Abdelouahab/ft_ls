@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/28 20:07:38 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/07/05 15:54:36 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/08 16:51:46 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	insert_lnode_rev(const char* head_, const char* info_)
 		*head = new_node;
 		return (0);
 	}
-	if ((*info)->sort_func((char*)(current->path), (char*)((*head)->path)) > 0)
+	if (sort_function(current, new_node, *info) < 0)
 	{
 		new_node->next = *head;
 		new_node->next->previous = new_node;
@@ -37,8 +37,8 @@ int	insert_lnode_rev(const char* head_, const char* info_)
 	else
 	{
 		current = *head;
-		while (current->next != NULL && (*info)->sort_func(current->next->path, 
-			new_node->path) > 0)
+		while (current->next != NULL && (sort_function(current->next, 
+			new_node, *info) > 0))
 			current = current->next;
 		new_node->next = current->next;
 		if (current->next != NULL)

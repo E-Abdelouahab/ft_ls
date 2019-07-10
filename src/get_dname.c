@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_name.c                                         :+:      :+:    :+:   */
+/*   get_dname.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/12 21:48:46 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/06/15 13:17:36 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/10 23:54:18 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,12 @@
 
 char *get_dname(char *p_name, char *c_name)
 {
-	p_name =ft_strjoin(p_name, "/");
-	c_name = ft_strjoin(p_name, c_name);
-	return (c_name);
+	if(*p_name && *c_name)
+	{
+		if (ft_strcmp(p_name, "/") == 0)
+			return ft_strjoin(p_name, c_name);
+		p_name =ft_strjoin(p_name, "/");
+		p_name = ft_strjoin(p_name, c_name);
+	}
+	return (p_name);
 }

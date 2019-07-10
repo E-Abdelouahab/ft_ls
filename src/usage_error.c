@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   my_cmp.c                                           :+:      :+:    :+:   */
+/*   usage_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/28 16:33:53 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/07/06 12:19:55 by ielmoudn         ###   ########.fr       */
+/*   Created: 2019/07/07 15:26:38 by ielmoudn          #+#    #+#             */
+/*   Updated: 2019/07/07 15:31:44 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_ls.h"
 
-int		my_cmp(const char* a, const char* b)
+void	usage_error(char c)
 {
-	unsigned long	a_;
-	unsigned long	b_;
-
-	a_ = (unsigned long)a;
-	b_ = (unsigned long)b;
-	return (a_ < b_) ? -1 : 1;
+	printf("ls : illegal option -- %c\n", c);
+	printf("usage: ls [-RSalrt] [file ...]\n");
 }
