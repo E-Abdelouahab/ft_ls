@@ -6,13 +6,13 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/18 20:07:01 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/06/18 22:13:02 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/11 23:48:17 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_ls.h"
 
-void	print_color(__uint8_t type)
+void	print_color(__uint8_t type, mode_t perms)
 {
 	if (type == DT_DIR)
 		printf(BLUE);
@@ -23,7 +23,12 @@ void	print_color(__uint8_t type)
 	else if (type == DT_SOCK)
 		printf(CYAN);
 	else if (type == DT_REG)
-		printf(RESET);
+	{
+		if(perms & S_IXUSR)
+			printf(RED);
+		else
+			printf(RESET);
+	}
 	else if (type == 0)
 		printf(RESET);
 }

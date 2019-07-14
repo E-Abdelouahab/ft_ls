@@ -6,13 +6,14 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by ********          #+#    #+#             */
-/*   Updated: 2019/06/01 05:47:30 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/13 20:18:34 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <string.h>
+# include <stdlib.h>
 
 typedef struct	s_list
 {
@@ -20,6 +21,12 @@ typedef struct	s_list
 	size_t			content_size;
 	struct s_list	*next;
 }				t_list;
+
+typedef struct		s_free
+{
+	void			*address;
+	struct s_free	*next;
+}					t_free;
 
 int				ft_atoi(const char *str);
 int				ft_islower(int c);
@@ -89,5 +96,6 @@ t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 void			ft_lstaddend(t_list **alst, t_list *new);
 int				ft_atoi_base(char *str, char *base);
 char			*ft_itoa_base(int value, char *base);
+void			*falloc(size_t size, int option, int tracker);
 
 #endif

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_type.c                                       :+:      :+:    :+:   */
+/*   print_permissions.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 06:19:35 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/06/14 11:36:06 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/11 22:07:20 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_ls.h"
 
-void	print_type(int filemode)
+void	print_type(unsigned short filemode)
 {
 	if ((filemode & S_IFMT) == S_IFDIR)
 		printf("d");
@@ -28,4 +28,45 @@ void	print_type(int filemode)
 		printf("s");
 	else if ((filemode & S_IFMT) == S_IFIFO)
 		printf("p");
+}
+
+void	print_permissions(unsigned short filemode)
+{
+	print_type(filemode);
+	if (filemode & S_IRUSR)
+		printf("r");
+	else
+		printf("-");
+	if (filemode & S_IWUSR) 
+		printf("w");
+	else
+		printf("-");
+	if (filemode & S_IXUSR)
+		printf("x");
+	else
+		printf("-");
+	if (filemode & S_IRGRP)
+		printf("r");
+	else
+		printf("-");
+	if (filemode & S_IWGRP)
+		printf("w");
+	else
+		printf("-");
+	if (filemode & S_IXGRP)
+		printf("x");
+	else
+		printf("-");
+	if (filemode & S_IROTH)
+		printf("r");
+	else
+		printf("-");
+	if (filemode & S_IWOTH)
+		printf("w");
+	else
+		printf("-");
+	if (filemode & S_IXOTH)
+		printf("x  ");
+		else
+			printf("-  ");
 }

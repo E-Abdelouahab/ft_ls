@@ -6,7 +6,7 @@
 #    By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/05 13:08:42 by ielmoudn          #+#    #+#              #
-#    Updated: 2019/07/10 14:52:25 by ielmoudn         ###   ########.fr        #
+#    Updated: 2019/07/13 21:27:05 by ielmoudn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,9 +26,7 @@ FILENAMES = get_options.c\
 	main.c\
 	new_lnode.c\
 	f_print.c\
-	insert_beg.c\
 	get_dname.c\
-	basename.c\
 	get_type.c\
 	print_color.c\
 	read_content.c\
@@ -36,7 +34,7 @@ FILENAMES = get_options.c\
 	process_args.c\
 	get_function.c\
 	print_args.c\
-	fill_info.c\
+	normal_fill.c\
 	init_info.c\
 	insert_argnode.c\
 	insert_argnode_rev.c\
@@ -46,7 +44,11 @@ FILENAMES = get_options.c\
 	sort_function.c\
 	sort_args_func.c\
 	read_all.c\
-	get_width.c
+	get_width.c\
+	full_print.c\
+	print_permissions.c\
+	handle_error.c\
+	full_print_node.c
 
 HEADER_FILE = ./inc/ft_ls.h
 SRC_DIR = ./src

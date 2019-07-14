@@ -6,16 +6,11 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/19 01:11:00 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/07/10 23:57:51 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/14 13:24:08 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_ls.h"
-
-void handle_error(char *name)
-{
-	printf("ft_ls: %s: %s\n\n", name, strerror(errno));
-}
 
 void	read_content(t_node **head, t_info **info, int tracker)
 {
@@ -43,8 +38,8 @@ void	read_content(t_node **head, t_info **info, int tracker)
 		if (!strcmp(dp->d_name, ".") || !strcmp(dp->d_name, "..") || is_hidden(dp->d_name))
 			continue;
 		else
-		{
-			fill_info(info, dp);
+		{	
+			normal_fill(info, dp);
 			(*info)->insert_func((char*)(&all), (char*)info);
 			((*info)->list_len)++;
 			if (is_dir(dp->d_type))
@@ -52,7 +47,7 @@ void	read_content(t_node **head, t_info **info, int tracker)
 		}
 	}
 	if (all)
-		f_print(all, *info);
+		(*info)->print_func(all, *info);
 	else
 		printf("\n");
 	if ((*info)->flags & FLAG_RCAP)

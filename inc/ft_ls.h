@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/27 15:48:57 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/07/10 22:46:39 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/13 22:23:52 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@
 #include <unistd.h>
 #include <stdbool.h>
 #include <errno.h>
+#include <pwd.h>
+#include <sys/types.h>
+#include <grp.h>
+#include <time.h>
+
 
 // boolean values
 #define TRUE		1
@@ -38,7 +43,7 @@
 #define BOLD_BLUE		"\x1b[96m"
 
 // defining options string
-#define FLAGS_STR "lRartS"
+#define FLAGS_STR "lRartSh"
 
 // defining flags values
 #define FLAG_L		1
@@ -47,6 +52,7 @@
 #define FLAG_RLOW	8
 #define FLAG_T		16
 #define FLAG_SCAP	32
+#define FLAG_H		64
 
 // flags macros
 #define HIDDEN FALSE
@@ -63,13 +69,12 @@
 
 typedef struct		s_info t_info;
 
-
 // defining a structure to store arguments in a sorted way
 typedef struct		s_args
 {
 	char			*name;
-	time_t			time;
-	blksize_t		size;
+	time_t			m_time;
+	blkcnt_t		size;
 	struct s_args	*previous;
 	struct s_args	*next;
 }					t_args;
@@ -79,18 +84,27 @@ typedef struct		s_node
 {
 	char			*path;
 	char			*name;
-	time_t			time;
+	dev_t			m_rdev;
+	mode_t			perm;
+	nlink_t			h_links;
+	char			*owner;
+	char			*group;
 	off_t			size;
+	blksize_t		blk_size;
+	time_t			m_time;
 	int				type;
 	struct s_node	*previous;
 	struct s_node	*next;
 }					t_node;
 
-//define function type2
+//define function - comparing functions
 typedef int (*t_func)(const char*, const char*);
 
-//define function type3
+//define function - arg fill functions
 typedef int (*t_func2)(t_args**, t_info*, char*);
+
+//define function - printing functions
+typedef void (*t_func3)(t_node*, t_info*);
 
 // defining filling info structure
 struct				s_info
@@ -106,10 +120,8 @@ struct				s_info
 	int				cols_tbp;
 	t_func			insert_func;
 	t_func2			insert_arg_func;
-	t_func			print_func;
+	t_func3			print_func;
 };
-
-
 
 // functions prototypes 
 int				check_valid_opt(char *str);
@@ -124,7 +136,7 @@ void			recur_all(t_node **head, int tracker);
 char			*get_dname(char *p_name, char *c_name);
 char			*basename(char *str, char c);
 int				get_type(int type);
-void			print_color(__uint8_t type);
+void			print_color(__uint8_t type, mode_t perms);
 int				is_hidden(char *name);
 void			read_content(t_node **head, t_info **info, int tracker);
 void			read_all(t_node **head, t_info **info, int tracker);
@@ -139,12 +151,19 @@ void			get_function(t_info **info);
 int				insert_argnode_rev(t_args **args, t_info *info, char *name);
 int				insert_lnode_rev(const char* head_, const char* info_);
 void			print_args(t_args *args);
-void			fill_info(t_info **info, struct dirent *dp);
+void			normal_fill(t_info **info, struct dirent *dp);
 void			usage_error(char c);
 int				sort_function(t_node *node, t_node *new_node, t_info *info);
 int				sort_args_func(t_args *node, t_args *new_node, t_info *info);
 t_args			*process_args(int ac, char **av, t_info **info);
 unsigned short	get_width(void);
+void			print_permissions(unsigned short filemode);
+void			full_print(t_node *head, t_info *info);
+void			handle_error(char *name);
+char			*get_time(time_t m_time);
+void			print_size(off_t size, int perms);
+void			full_print_node(t_node *head, t_info *info);
+
 
 
 #endif

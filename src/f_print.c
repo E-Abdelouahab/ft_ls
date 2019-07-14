@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/16 13:34:30 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/07/10 23:02:50 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/13 19:55:00 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ t_node	***create_tab(t_node *all, t_info **info)
 	i = 0;
 	cols = get_width() / ((*info)->max_len + 1);
 	lines = ((*info)->list_len / cols) + (((*info)->list_len % cols) != 0);
-	table = (t_node***)malloc(lines * sizeof(t_node**));
+	table = (t_node***)falloc(lines * sizeof(t_node**), 1, 1);
 	while(i < lines)
-		table[i++] = (t_node**)malloc((cols + 1) * sizeof(t_node*));
+		table[i++] = (t_node**)falloc((cols + 1) * sizeof(t_node*), 1, 1);
 	init_table(&table, cols, lines);
 	i = -1;
 	tracker = all;
@@ -78,23 +78,16 @@ void	f_print(t_node *head, t_info *info)
 	while(i < info->lines_tbp)
 	{
 		j = 0;
-		while(table[i][j+1] != NULL)
+		while(table[i][j + 1] != NULL)
 		{
-			print_color(table[i][j]->type);
+			print_color(table[i][j]->type, table[i][j]->perm);
 			printf(str, table[i][j++]->name);
-			print_color(0);
+			print_color(0, 0);
 		}
-		print_color(table[i][j]->type);
-		printf("%s\n", table[i][j]->name);
-		print_color(0);
+		print_color(table[i][j]->type, table[i][j]->perm);
+		printf("%s\n",table[i][j]->name);
+		print_color(0, 0);
 		i++;
 	}
-	// while ( current_node != NULL)
-	// {
-	// 	print_color(current_node->type);
-	// 	printf(str, current_node->name);
-	// 	print_color(0);
-	// 	current_node = current_node->next;
-	// }
 	printf("\n");
 }

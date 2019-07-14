@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/10 23:33:05 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/07/10 22:37:53 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/13 20:15:07 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,12 @@ int main(int ac, char **av)
 	t_args *args;
 	t_info *info;
 	t_node *head;
+	t_args *args_;
 
 	if (ac < 0)
 		return 0;
 	args = process_args(ac, av, &info);
+	args_ = args;
 	head = (t_node*)malloc(sizeof(t_node));
 	while(args)
 	{
@@ -36,5 +38,6 @@ int main(int ac, char **av)
 		read_function(&head, &info);
 		args = args->next;
 	}
+	falloc(0, 0, 0);
 	return 0;
 }
