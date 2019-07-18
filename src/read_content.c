@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/19 01:11:00 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/07/14 13:24:08 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/16 23:25:23 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,13 @@ void	read_content(t_node **head, t_info **info, int tracker)
 	dirs = NULL;
 	all = NULL;
 	dir = opendir((*head)->path);
+	printf("path : %s , name: %s\n", (*head)->path, (*head)->name);
 	if (!dir)
 	{
 		handle_error((*head)->name);
 		return;
 	}
-	if (tracker)
+	if (tracker || !((*info)->flags & FLAG_RCAP))
 		printf("%s:\n", (*head)->path);
 	(*info)->path_tbi = (*head)->path;
 	(*info)->list_len = 0;

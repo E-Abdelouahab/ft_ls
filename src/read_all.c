@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/19 16:18:43 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/07/13 14:11:26 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/16 21:03:14 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ void	read_all(t_node **head, t_info **info, int tracker)
 			normal_fill(info, dp);
 			(*info)->insert_func((char*)(&all), (char*)info);
 			((*info)->list_len)++;
-			if (is_dir(dp->d_type))
+			if (is_dir(dp->d_type) && ft_strcmp(dp->d_name, ".") != 0
+				&& ft_strcmp(dp->d_name, "..") != 0)
 				(*info)->insert_func((char*)(&dirs), (char*)info);
 	}
 	if (all)

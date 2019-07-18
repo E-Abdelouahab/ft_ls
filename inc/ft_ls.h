@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/27 15:48:57 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/07/13 22:23:52 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/17 14:51:36 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ typedef struct		s_args
 	char			*name;
 	time_t			m_time;
 	blkcnt_t		size;
+	int				option;
 	struct s_args	*previous;
 	struct s_args	*next;
 }					t_args;
@@ -143,7 +144,7 @@ void			read_all(t_node **head, t_info **info, int tracker);
 void			reccur(t_node *dirs, t_node *copy, int *tracker);
 int				get_options(int argc, char **argv, t_info **info);
 t_args			fill_args(int ac, char **av);
-t_args			*new_argnode(char *arg_name);
+t_args			*new_argnode(char *arg_name, t_info *info);
 int				insert_argnode(t_args **args, t_info *info, char *name);
 void			init_info(t_info **info);
 int				my_cmp(const char* a, const char* b);
@@ -160,7 +161,7 @@ unsigned short	get_width(void);
 void			print_permissions(unsigned short filemode);
 void			full_print(t_node *head, t_info *info);
 void			handle_error(char *name);
-char			*get_time(time_t m_time);
+void			get_time(time_t m_time);
 void			print_size(off_t size, int perms);
 void			full_print_node(t_node *head, t_info *info);
 

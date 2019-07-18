@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/11 12:46:31 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/07/14 13:23:20 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/16 22:12:54 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,6 @@ int get_options(int argc, char **argv, t_info **info)
 	}
 		return (i);
 }
-
-// i is the index of the first non flag argument.
 
 int check_valid_opt(char *str)
 {

@@ -6,20 +6,26 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/11 21:10:44 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/07/13 23:12:46 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/16 21:33:28 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_ls.h"
 
-char	*get_time(time_t m_time)
+void	get_time(time_t m_time)
 {
-	char	*r_time;
-	char	*ret_time;
+	int		act_year;
+	time_t	act_time;
 
-	r_time = ctime(&m_time);
-	ret_time = ft_strsub(r_time, 4, 12);
-	return(ret_time);
+	act_time = time(NULL);
+	act_year = ft_atoi(ft_strsub(ctime(&act_time), 20, 5));
+	if ((act_time - 15552000) > m_time)
+	{
+		printf("%s ", ft_strsub(ctime(&m_time), 4, 7));
+		printf("%d  ", ft_atoi(ft_strsub(ctime(&m_time), 20, 5)));
+	}
+	else
+		printf("%s  ",ft_strsub(ctime(&m_time), 4, 12));
 }
 
 void	readable(off_t size)
@@ -34,7 +40,7 @@ void	readable(off_t size)
 	units[2] = "M";
 	units[3] = "G";
 	units[4] = "T";
-	buf = (char*)falloc(sizeof(char*), 1, 1);
+	buf = (char*)falloc(sizeof(char*), 1, 0);
 	temp = (double)size;
 	while (temp> 1024.)
 	{

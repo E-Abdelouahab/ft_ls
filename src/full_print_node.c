@@ -6,20 +6,10 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/13 21:21:51 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/07/14 13:14:43 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/16 21:28:32 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// void	print_bin(int bin)
-// {
-// 	if (bin < 2)
-// 		ft_putchar(bin + '0');
-// 	else
-// 	{
-// 		print_bin(bin / 2);
-// 		print_bin(bin % 2);
-// 	}
-// }
 #include "../inc/ft_ls.h"
 
 void	print_size_by_type(t_node *node, t_info *info)
@@ -65,7 +55,7 @@ void	full_print_node(t_node *head, t_info *info)
 		printf("%-10s ", head->owner);
 		printf("%-14s ", head->group);
 		print_size_by_type(head, info);
-		printf("%-14s ", get_time(head->m_time));
+		get_time(head->m_time);
 		print_color(head->type, head->perm);
 		print_name_by_type(head);
 		print_color(0, 0);
