@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/27 16:14:08 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/07/17 14:33:45 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/19 18:21:52 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ int	insert_argnode(t_args **args, t_info *info, char *name)
 	t_args *current;
 
 	current = *args;
-	new_node = new_argnode(name, info);
+	new_node = new_argnode(name);
+
 	if (*args == NULL)
 	{
 		*args = new_node;

@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/27 15:48:57 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/07/17 14:51:36 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/19 22:47:10 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ typedef struct		s_args
 	char			*name;
 	time_t			m_time;
 	blkcnt_t		size;
-	int				option;
 	struct s_args	*previous;
 	struct s_args	*next;
 }					t_args;
@@ -110,6 +109,7 @@ typedef void (*t_func3)(t_node*, t_info*);
 // defining filling info structure
 struct				s_info
 {
+	unsigned char	print_total;
 	char			*name_tbi;
 	char			*path_tbi;
 	int				max_len;
@@ -119,6 +119,7 @@ struct				s_info
 	int				list_len;
 	int				lines_tbp;
 	int				cols_tbp;
+	int				ikhan;
 	t_func			insert_func;
 	t_func2			insert_arg_func;
 	t_func3			print_func;
@@ -144,7 +145,7 @@ void			read_all(t_node **head, t_info **info, int tracker);
 void			reccur(t_node *dirs, t_node *copy, int *tracker);
 int				get_options(int argc, char **argv, t_info **info);
 t_args			fill_args(int ac, char **av);
-t_args			*new_argnode(char *arg_name, t_info *info);
+t_args			*new_argnode(char *arg_name);
 int				insert_argnode(t_args **args, t_info *info, char *name);
 void			init_info(t_info **info);
 int				my_cmp(const char* a, const char* b);
@@ -164,6 +165,9 @@ void			handle_error(char *name);
 void			get_time(time_t m_time);
 void			print_size(off_t size, int perms);
 void			full_print_node(t_node *head, t_info *info);
+int				get_type2(mode_t st_mode);
+void			read_args(t_args **head, t_info **info);
+void			read_function(t_node **head, t_info **info);
 
 
 

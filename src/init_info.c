@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/27 15:29:36 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/07/13 15:34:54 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/19 22:47:51 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,6 @@ void	init_info(t_info **info)
 	(*info)->insert_func = NULL;
 	(*info)->print_func = NULL;
 	(*info)->tracker = 0;
+	(*info)->ikhan = 1;
+	(*info)->print_total = 0;
 }

@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/11 21:10:44 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/07/16 21:33:28 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/19 22:49:17 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,13 @@ void	full_print(t_node *head, t_info *info)
 {
 	t_node	*current;
 	long	total;
-
 	current = head;
 	info->tracker = 0;
-	total = get_total(current);
-	printf("total %ld\n", total);
+	if(info->print_total == 1)
+	{
+		total = get_total(current);
+		printf("total %ld\n", total);
+	}
 	full_print_node(head, info);
 	printf("\n");
 }

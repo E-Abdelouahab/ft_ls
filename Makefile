@@ -6,7 +6,7 @@
 #    By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/05 13:08:42 by ielmoudn          #+#    #+#              #
-#    Updated: 2019/07/13 21:27:05 by ielmoudn         ###   ########.fr        #
+#    Updated: 2019/07/19 23:29:31 by ielmoudn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ _BOLD = \x1b[1m
 _END = \x1b[0m
 
 CC = gcc
-NAME = my_ls
+NAME = ft_ls
 FILENAMES = get_options.c\
 	insert_lnode.c\
 	is_dir.c\
@@ -48,7 +48,9 @@ FILENAMES = get_options.c\
 	full_print.c\
 	print_permissions.c\
 	handle_error.c\
-	full_print_node.c
+	full_print_node.c\
+	get_type2.c\
+	rwina.c
 
 HEADER_FILE = ./inc/ft_ls.h
 SRC_DIR = ./src

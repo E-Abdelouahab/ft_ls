@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/16 13:34:30 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/07/13 19:55:00 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/19 21:03:53 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void	f_print(t_node *head, t_info *info)
 	str = get_printf_str(info->max_len);
 	table = create_tab(head, &info);
 	i = 0;
+
 	while(i < info->lines_tbp)
 	{
 		j = 0;
