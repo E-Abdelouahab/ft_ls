@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by ********          #+#    #+#             */
-/*   Updated: 2019/07/13 19:54:22 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/20 12:26:37 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	*ft_memalloc(size_t size)
 {
 	void	*mem;
 
-	if (!(mem = falloc(size, 1, 0)))
+	if (!(mem = malloc(size)))
 		return (NULL);
 	ft_bzero(mem, size);
 	return (mem);

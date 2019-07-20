@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/19 01:11:00 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/07/19 21:04:13 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/20 14:28:06 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,9 @@ void	read_content(t_node **head, t_info **info, int tracker)
 		handle_error((*head)->name);
 		return;
 	}
-	// || !((*info)->flags & FLAG_RCAP)
 	if (tracker != 0)
 		printf("%s:\n", (*head)->path);
-	(*info)->path_tbi = (*head)->path;
+	(*info)->path_tbi = ft_strdup((*head)->path);
 	(*info)->list_len = 0;
 	(*info)->max_len = 0;
 	while ((dp = readdir(dir)) != NULL)
@@ -51,16 +50,20 @@ void	read_content(t_node **head, t_info **info, int tracker)
 		(*info)->print_func(all, *info);
 	else
 		printf("\n");
+	free_nodes(all);
+	all = dirs;
 	if ((*info)->flags & FLAG_RCAP)
 	{
 		while (dirs)
 		{
 			(*info)->path_tbi = (*head)->path;
-			(*info)->name_tbi = dirs->name;
+			(*info)->name_tbi = ft_strdup(dirs->name);
 			copy = new_lnode(*info);
 			read_content(&copy, info, tracker + 1);
 			dirs = dirs->next;
 		}
 	}
+	if(all != NULL)
+		free_nodes(all);
 	closedir(dir);
 }

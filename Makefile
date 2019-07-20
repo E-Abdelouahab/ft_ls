@@ -6,7 +6,7 @@
 #    By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/05 13:08:42 by ielmoudn          #+#    #+#              #
-#    Updated: 2019/07/19 23:29:31 by ielmoudn         ###   ########.fr        #
+#    Updated: 2019/07/20 13:06:13 by ielmoudn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,9 @@ FILENAMES = get_options.c\
 	handle_error.c\
 	full_print_node.c\
 	get_type2.c\
-	rwina.c
+	rwina.c\
+	free_nodes.c\
+	free_args.c
 
 HEADER_FILE = ./inc/ft_ls.h
 SRC_DIR = ./src

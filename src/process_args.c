@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/19 22:55:52 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/07/16 22:22:56 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/20 12:29:24 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_args	*process_args(int ac, char **av, t_info **info)
 	int		first_item;
 	t_args	*args;
 
-	*info = (t_info*)falloc(sizeof(t_info), 1, 0);
+	*info = (t_info*)malloc(sizeof(t_info));
 	args = NULL;
 	init_info(info);
 	first_item = get_options(ac, av, info);

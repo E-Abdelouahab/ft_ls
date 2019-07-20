@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/13 21:21:51 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/07/19 19:49:18 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/20 14:13:32 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	print_name_by_type(t_node *head)
 	char	*linkname;
 	int		r;
 
-	linkname = falloc((head->size + 1), 1, 1);
+	linkname = (char*)malloc(head->size + 1);
 	if (head->type == DT_LNK)
 	{
 		r = readlink(head->path, linkname, head->size + 1);
@@ -44,6 +44,7 @@ void	print_name_by_type(t_node *head)
 	}
 	else
 		printf("%s\n", head->name);
+	free(linkname);
 }
 
 void	full_print_node(t_node *head, t_info *info)

@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/16 13:34:30 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/07/19 21:03:53 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/20 14:07:08 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ t_node	***create_tab(t_node *all, t_info **info)
 	i = 0;
 	cols = get_width() / ((*info)->max_len + 1);
 	lines = ((*info)->list_len / cols) + (((*info)->list_len % cols) != 0);
-	table = (t_node***)falloc(lines * sizeof(t_node**), 1, 1);
+	table = (t_node***)malloc(lines * sizeof(t_node**));
 	while(i < lines)
-		table[i++] = (t_node**)falloc((cols + 1) * sizeof(t_node*), 1, 1);
+		table[i++] = (t_node**)malloc((cols + 1) * sizeof(t_node*));
 	init_table(&table, cols, lines);
 	i = -1;
 	tracker = all;
@@ -63,6 +63,16 @@ t_node	***create_tab(t_node *all, t_info **info)
 	}
 
 	return(table);
+}
+
+void	free_tab(t_node ***table, int lines)
+{
+	int i;
+
+	i = 0;
+	while (i < lines)
+		free(table[i++]);
+	free(table);
 }
 
 void	f_print(t_node *head, t_info *info)
@@ -90,5 +100,6 @@ void	f_print(t_node *head, t_info *info)
 		print_color(0, 0);
 		i++;
 	}
+	free_tab(table, info->lines_tbp);
 	printf("\n");
 }

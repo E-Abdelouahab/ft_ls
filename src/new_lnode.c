@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/16 11:47:09 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/07/19 22:45:28 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/20 13:00:15 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,23 +44,22 @@ void	fill_extra_info(t_node **node, struct stat *inf)
 t_node *new_lnode(t_info *info)
 {
 	t_node	*node;
-	struct stat *inf;
+	struct stat inf;
 
-	inf = (struct stat*)falloc(sizeof(struct stat), 1, 0);
-	if(!(node = (t_node*)falloc(sizeof(t_node), 1, 0)))
+	if(!(node = (t_node*)malloc(sizeof(t_node))))
 		return (NULL);
 	if(info->ikhan == 0)
 		node->path = get_dname(info->path_tbi, info->name_tbi);
 	else
 		node->path = ft_strdup(info->name_tbi);
-	node->name = info->name_tbi;
+	node->name = ft_strdup(info->name_tbi);
 	node->type = info->type_tbi;
 	node->previous = NULL;
 	node->next = NULL;
-	lstat(node->path, inf);
-	node->size = inf->st_size;
-	node->m_time = inf->st_mtime;
-	node->perm = inf->st_mode;
-	fill_extra_info(&node, inf);
+	lstat(node->path, &inf);
+	node->size = inf.st_size;
+	node->m_time = inf.st_mtime;
+	node->perm = inf.st_mode;
+	fill_extra_info(&node, &inf);
 	return(node);
 }

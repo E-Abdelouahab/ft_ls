@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by ********          #+#    #+#             */
-/*   Updated: 2019/07/13 19:56:25 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/20 12:27:06 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char			*ft_itoa(int nbr)
 		nb = (unsigned int)nbr;
 	size = (unsigned int)get_nb_size(nb);
 	index = 0;
-	if (!(str = (char*)falloc(sizeof(char) * (size + 1 + (nbr < 0 ? 1 : 0)), 1, 1)))
+	if (!(str = (char*)malloc(sizeof(char) * (size + 1 + (nbr < 0 ? 1 : 0)))))
 		return (0);
 	if (nbr < 0 && (str[index] = '-'))
 		size++;

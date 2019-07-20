@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/11 21:10:44 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/07/19 22:49:17 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/20 12:06:18 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,22 +32,20 @@ void	readable(off_t size)
 {
 	double	temp;
 	int i = 0;
-	char *buf;
-	char *units[5];
+	char units[5];
 
-	units[0] = "B";
-	units[1] = "K";
-	units[2] = "M";
-	units[3] = "G";
-	units[4] = "T";
-	buf = (char*)falloc(sizeof(char*), 1, 0);
+	units[0] = 'B';
+	units[1] = 'K';
+	units[2] = 'M';
+	units[3] = 'G';
+	units[4] = 'T';
 	temp = (double)size;
 	while (temp> 1024.)
 	{
 		temp = temp / 1024.;
 		i++;
 	}
-	printf("%8.1lf%-5s ", temp, units[i]);
+	printf("%8.1lf%-5c ", temp, units[i]);
 }
 
 long	get_total(t_node *head)

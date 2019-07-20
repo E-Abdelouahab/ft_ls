@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/27 15:48:57 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/07/19 22:47:10 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/20 13:06:03 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,6 +168,9 @@ void			full_print_node(t_node *head, t_info *info);
 int				get_type2(mode_t st_mode);
 void			read_args(t_args **head, t_info **info);
 void			read_function(t_node **head, t_info **info);
+void			free_nodes(t_node *nodes);
+void			free_args(t_args *args);
+
 
 
 

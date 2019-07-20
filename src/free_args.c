@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_dname.c                                        :+:      :+:    :+:   */
+/*   free_args.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/12 21:48:46 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/07/20 13:19:30 by ielmoudn         ###   ########.fr       */
+/*   Created: 2019/07/20 12:33:05 by ielmoudn          #+#    #+#             */
+/*   Updated: 2019/07/20 13:08:33 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_ls.h"
 
-char *get_dname(char *p_name, char *c_name)
+void	free_args(t_args *args)
 {
-	char	*ret;
-	char 	*to_be_freed;
+t_args	*tracker;
 
-	ret = NULL;
-	if(*p_name && *c_name)
+	tracker = args;
+	if (tracker != NULL)
+		args = tracker->previous;
+	while (tracker != NULL)
 	{
-		if (ft_strcmp(p_name, "/") == 0)
-			ret = ft_strjoin(p_name, c_name);
-		else
-		{
-			ret =ft_strjoin(p_name, "/");
-			to_be_freed = ret;
-			ret = ft_strjoin(ret, c_name);
-			free(to_be_freed);
-		}
+		free(tracker->name);
+		free(tracker);
+		tracker = args;
+		if (tracker != NULL)
+			args = tracker->previous;
 	}
-	return (ret);
 }
