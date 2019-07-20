@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/11 21:10:44 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/07/20 12:06:18 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/20 22:27:07 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,25 @@
 
 void	get_time(time_t m_time)
 {
-	int		act_year;
 	time_t	act_time;
+	char	*tbf;
 
 	act_time = time(NULL);
-	act_year = ft_atoi(ft_strsub(ctime(&act_time), 20, 5));
 	if ((act_time - 15552000) > m_time)
 	{
-		printf("%s ", ft_strsub(ctime(&m_time), 4, 7));
-		printf("%d  ", ft_atoi(ft_strsub(ctime(&m_time), 20, 5)));
+		tbf = ft_strsub(ctime(&m_time), 4, 7);
+		printf("%s ", tbf);
+		free(tbf);
+		tbf = ft_strsub(ctime(&m_time), 20, 5);
+		printf("%d  ", ft_atoi(tbf));
+		free(tbf);
 	}
 	else
-		printf("%s  ",ft_strsub(ctime(&m_time), 4, 12));
+	{
+		tbf = ft_strsub(ctime(&m_time), 4, 12);
+		printf("%s  ", tbf);
+		free(tbf);
+	}
 }
 
 void	readable(off_t size)

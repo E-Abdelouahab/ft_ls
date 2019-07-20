@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/16 13:34:30 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/07/20 14:07:08 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/20 22:17:01 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,14 @@
 char	*get_printf_str(int max_len)
 {
 	char *str;
+	char *tbf1;
+	char *tbf2;
 
-	str = ft_strjoin("%-", ft_itoa(max_len + 1));
-	str = ft_strjoin(str, "s");
+	tbf1 = ft_itoa(max_len + 1);
+	tbf2 = ft_strjoin("%-", tbf1);
+	str = ft_strjoin(tbf2, "s");
+	free(tbf1);
+	free(tbf2);
 	return (str);
 }
 
@@ -100,6 +105,7 @@ void	f_print(t_node *head, t_info *info)
 		print_color(0, 0);
 		i++;
 	}
+	free(str);
 	free_tab(table, info->lines_tbp);
 	printf("\n");
 }

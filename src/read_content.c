@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/19 01:11:00 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/07/20 14:28:06 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/20 23:41:06 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,11 @@ void	read_content(t_node **head, t_info **info, int tracker)
 	struct dirent	*dp;
 	t_node			*dirs;
 	t_node			*all;
-	t_node			*copy;
+	t_node			*tbf;
 
 	dirs = NULL;
 	all = NULL;
+	tbf = NULL;
 	dir = opendir((*head)->path);
 	if (!dir)
 	{
@@ -30,7 +31,7 @@ void	read_content(t_node **head, t_info **info, int tracker)
 	}
 	if (tracker != 0)
 		printf("%s:\n", (*head)->path);
-	(*info)->path_tbi = ft_strdup((*head)->path);
+	(*info)->path_tbi = (*head)->path;
 	(*info)->list_len = 0;
 	(*info)->max_len = 0;
 	while ((dp = readdir(dir)) != NULL)
@@ -46,24 +47,25 @@ void	read_content(t_node **head, t_info **info, int tracker)
 				(*info)->insert_func((char*)(&dirs), (char*)info);
 		}
 	}
+	tbf = all;
 	if (all)
 		(*info)->print_func(all, *info);
 	else
 		printf("\n");
-	free_nodes(all);
-	all = dirs;
+	if (tbf != NULL)
+	free_nodes(tbf);
+	tbf = dirs;
 	if ((*info)->flags & FLAG_RCAP)
 	{
 		while (dirs)
 		{
 			(*info)->path_tbi = (*head)->path;
-			(*info)->name_tbi = ft_strdup(dirs->name);
-			copy = new_lnode(*info);
-			read_content(&copy, info, tracker + 1);
+			(*info)->name_tbi = dirs->name;
+			read_content(&dirs, info, tracker + 1);
 			dirs = dirs->next;
 		}
 	}
-	if(all != NULL)
-		free_nodes(all);
+	if(tbf != NULL)
+		free_nodes(tbf);
 	closedir(dir);
 }
