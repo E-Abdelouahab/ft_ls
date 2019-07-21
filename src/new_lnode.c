@@ -6,26 +6,26 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/16 11:47:09 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/07/20 13:00:15 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/21 20:42:36 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_ls.h"
 
-char *get_username(uid_t uid_var)
+char	*get_username(uid_t uid_var)
 {
 	struct passwd	*pwd;
-	char 			*username;
+	char			*username;
 
 	pwd = getpwuid(uid_var);
 	username = ft_strdup(pwd->pw_name);
 	return (username);
 }
 
-char *get_groupname(gid_t gid_var)
+char	*get_groupname(gid_t gid_var)
 {
 	struct group	*grp_;
-	char 			*groupname;
+	char			*groupname;
 
 	grp_ = getgrgid(gid_var);
 	groupname = ft_strdup(grp_->gr_name);
@@ -41,14 +41,14 @@ void	fill_extra_info(t_node **node, struct stat *inf)
 	(*node)->m_rdev = inf->st_rdev;
 }
 
-t_node *new_lnode(t_info *info)
+t_node	*new_lnode(t_info *info)
 {
-	t_node	*node;
-	struct stat inf;
+	t_node		*node;
+	struct stat	inf;
 
-	if(!(node = (t_node*)malloc(sizeof(t_node))))
+	if (!(node = (t_node*)malloc(sizeof(t_node))))
 		return (NULL);
-	if(info->ikhan == 0)
+	if (info->ikhan == 0)
 		node->path = get_dname(info->path_tbi, info->name_tbi);
 	else
 		node->path = ft_strdup(info->name_tbi);
@@ -61,5 +61,5 @@ t_node *new_lnode(t_info *info)
 	node->m_time = inf.st_mtime;
 	node->perm = inf.st_mode;
 	fill_extra_info(&node, &inf);
-	return(node);
+	return (node);
 }

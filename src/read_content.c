@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/19 01:11:00 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/07/21 19:30:59 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/21 20:51:17 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	read_content_helper2(t_node *all, t_node **dirs, t_node **head,
 			*dirs = (*dirs)->next;
 		}
 	}
-	if	(tbf != NULL)
+	if (tbf != NULL)
 		free_nodes(tbf);
 }
 
@@ -64,7 +64,7 @@ void	read_content(t_node **head, t_info **info, int tracker)
 	all = NULL;
 	dir = opendir((*head)->path);
 	if (!((*head)->perm & S_IXUSR))
-		return;
+		return ;
 	if (!dir)
 	{
 		handle_error((*head)->name);

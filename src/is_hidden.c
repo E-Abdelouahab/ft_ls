@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/18 22:57:06 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/06/19 15:59:14 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/21 20:30:39 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 int		is_hidden(char *name)
 {
 	if (name[0] == '.')
-		return 1;
-	return 0;
+		return (1);
+	return (0);
 }

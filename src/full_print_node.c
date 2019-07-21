@@ -6,26 +6,26 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/13 21:21:51 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/07/21 00:54:27 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/21 20:09:09 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_ls.h"
 
-void	print_size_by_type(t_node *node, t_info *info)
+void		print_size_by_type(t_node *node, t_info *info)
 {
-	int	maj;
-	int min;
+	int		maj;
+	int		min;
 
 	maj = major(node->m_rdev);
 	min = minor(node->m_rdev);
 	if ((node->type == DT_CHR) || (node->type == DT_BLK))
-			ft_printf("%4d, %4d ", maj, min);
+		ft_printf("%4d, %4d ", maj, min);
 	else
 		print_size(node->size, info->flags);
 }
 
-void	print_name_by_type(t_node *head)
+void		print_name_by_type(t_node *head)
 {
 	char	*linkname;
 	int		r;
@@ -34,8 +34,8 @@ void	print_name_by_type(t_node *head)
 	if (head->type == DT_LNK)
 	{
 		r = readlink(head->path, linkname, head->size + 1);
-		 if (r < 0)
-		 	handle_error(head->path);
+		if (r < 0)
+			handle_error(head->path);
 		else
 		{
 			linkname[head->size] = '\0';
@@ -47,9 +47,9 @@ void	print_name_by_type(t_node *head)
 	free(linkname);
 }
 
-void	full_print_node(t_node *head, t_info *info)
+void		full_print_node(t_node *head, t_info *info)
 {
-	while(head)
+	while (head)
 	{
 		print_permissions(head->perm);
 		ft_printf("%3u ", head->h_links);

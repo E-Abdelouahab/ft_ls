@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/18 20:07:01 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/07/21 00:54:27 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/21 20:45:00 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	print_color(__uint8_t type, mode_t perms)
 		ft_printf(CYAN);
 	else if (type == DT_REG)
 	{
-		if(perms & S_IXUSR)
+		if (perms & S_IXUSR)
 			ft_printf(RED);
 		else
 			ft_printf(RESET);

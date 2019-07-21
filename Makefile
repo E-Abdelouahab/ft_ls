@@ -6,7 +6,7 @@
 #    By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/05 13:08:42 by ielmoudn          #+#    #+#              #
-#    Updated: 2019/07/21 01:14:18 by ielmoudn         ###   ########.fr        #
+#    Updated: 2019/07/21 20:44:09 by ielmoudn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,6 @@ FILENAMES = get_options.c\
 	is_hidden.c\
 	process_args.c\
 	get_function.c\
-	print_args.c\
 	normal_fill.c\
 	init_info.c\
 	insert_argnode.c\

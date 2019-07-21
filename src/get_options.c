@@ -6,13 +6,13 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/11 12:46:31 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/07/21 02:38:39 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/21 20:18:15 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_ls.h"
 
-int in_str(char c, char *flag_str)
+int		in_str(char c, char *flag_str)
 {
 	int i;
 
@@ -23,7 +23,7 @@ int in_str(char c, char *flag_str)
 			return (i);
 		i++;
 	}
-	return(-1);
+	return (-1);
 }
 
 void	get_options_helper(char **argv, int i, t_info **info)
@@ -38,7 +38,7 @@ void	get_options_helper(char **argv, int i, t_info **info)
 		{
 			if ((1 << checker) & FLAG_SCAP && !((*info)->flags & FLAG_T))
 				(*info)->flags |= FLAG_SCAP;
-			else if((1 << checker) & FLAG_T && !((*info)->flags & FLAG_SCAP))
+			else if ((1 << checker) & FLAG_T && !((*info)->flags & FLAG_SCAP))
 				(*info)->flags |= FLAG_T;
 			else
 				(*info)->flags |= (1 << checker);
@@ -49,13 +49,13 @@ void	get_options_helper(char **argv, int i, t_info **info)
 	}
 }
 
-int get_options(int argc, char **argv, t_info **info)
+int		get_options(int argc, char **argv, t_info **info)
 {
 	int			i;
 
 	i = 1;
 	(*info)->flags = 0;
-	if(argc != 1)
+	if (argc != 1)
 	{
 		while (i < argc)
 		{
@@ -68,29 +68,29 @@ int get_options(int argc, char **argv, t_info **info)
 			i++;
 		}
 	}
-		return (i);
+	return (i);
 }
 
-int check_valid_opt(char *str)
+int		check_valid_opt(char *str)
 {
 	if (str[0] == '-' && strcmp(str, "-") != 0 && strcmp(str, "--") != 0)
-		return 1;
+		return (1);
 	else if (strcmp(str, "--") == 0)
-		return 2;
+		return (2);
 	else
-		return 0;
+		return (0);
 }
 
-int if_char(char *str, char c)
+int		if_char(char *str, char c)
 {
-	int i;
+	int		i;
 
 	i = 0;
 	while (str[i] != '\0')
 	{
 		if (str[i] == c)
-			return 1;
+			return (1);
 		i++;
 	}
-	return 0;
+	return (0);
 }

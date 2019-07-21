@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 06:19:35 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/07/21 02:57:55 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/21 20:55:33 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	print_permissions(unsigned short filemode)
 		ft_printf("r");
 	else
 		ft_printf("-");
-	if (filemode & S_IWUSR) 
+	if (filemode & S_IWUSR)
 		ft_printf("w");
 	else
 		ft_printf("-");

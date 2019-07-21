@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/10 14:41:44 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/07/10 14:49:33 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/21 20:20:03 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 unsigned short	get_width(void)
 {
-	 struct ttysize ts;
+	struct ttysize	ts;
 
-	 ioctl(0, TIOCGSIZE, &ts);
-	 return (ts.ts_cols);
+	ioctl(0, TIOCGSIZE, &ts);
+	return (ts.ts_cols);
 }

@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 12:33:05 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/07/20 22:20:06 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/21 20:06:20 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	free_args(t_args *args)
 {
-t_args	*tracker;
+	t_args	*tracker;
 
 	tracker = args;
 	if (tracker != NULL)

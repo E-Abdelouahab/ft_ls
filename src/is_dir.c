@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/12 13:23:57 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/06/14 11:41:03 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/21 20:30:02 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,7 @@
 bool	is_dir(uint8_t type)
 {
 	if (type & DT_DIR)
-		return TRUE;
+		return (TRUE);
 	else
-		return FALSE;
+		return (FALSE);
 }
-
-

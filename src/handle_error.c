@@ -6,13 +6,13 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/13 16:31:34 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/07/21 00:54:27 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/21 20:20:32 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_ls.h"
 
-void handle_error(char *name)
+void	handle_error(char *name)
 {
 	ft_printf("ft_ls: %s: %s\n\n", name, strerror(errno));
 }

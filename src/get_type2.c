@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/18 19:36:06 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/07/21 02:40:53 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/21 20:19:28 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,19 @@
 int		get_type2(mode_t st_mode)
 {
 	if ((st_mode & S_IFMT) == S_IFDIR)
-		return DIRECTORY;
+		return (DIRECTORY);
 	else if ((st_mode & S_IFMT) == S_IFCHR)
-		return CHR;
+		return (CHR);
 	else if ((st_mode & S_IFMT) == S_IFBLK)
-		return BLOCK;
+		return (BLOCK);
 	else if ((st_mode & S_IFMT) == S_IFREG)
-		return REGULAR;
+		return (REGULAR);
 	else if ((st_mode & S_IFMT) == S_IFLNK)
-		return LINK;
+		return (LINK);
 	else if ((st_mode & S_IFMT) == S_IFSOCK)
-		return SOCKET;
+		return (SOCKET);
 	else if ((st_mode & S_IFMT) == S_IFIFO)
-		return FIFO;
+		return (FIFO);
 	else
-		return UNKNOWN;
+		return (UNKNOWN);
 }

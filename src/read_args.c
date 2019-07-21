@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 17:16:30 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/07/21 03:44:07 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/21 20:48:46 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ void	read_args_helper1_1(t_info **info, t_node **dirs)
 	((*info)->counter)++;
 }
 
-void	read_args_helper1(t_info **info, t_args **head, t_node **dirs, t_node **all)
+void	read_args_helper1(t_info **info, t_args **head, t_node **dirs,
+	t_node **all)
 {
 	struct stat		inf;
 	struct stat		inf2;
@@ -28,14 +29,14 @@ void	read_args_helper1(t_info **info, t_args **head, t_node **dirs, t_node **all
 	stat((*head)->name, &inf2);
 	if ((inf.st_mode & S_IFMT) == S_IFLNK && (inf2.st_mode & S_IFMT) ==
 		S_IFDIR && (*info)->flags & FLAG_L)
-		{
-			(*info)->type_tbi = LINK;
-			(*info)->insert_func((char*)(all), (char*)info);
-			((*info)->list_len)++;
-		}
+	{
+		(*info)->type_tbi = LINK;
+		(*info)->insert_func((char*)(all), (char*)info);
+		((*info)->list_len)++;
+	}
 	else
 	{
-		if((inf2.st_mode & S_IFMT) == S_IFDIR)
+		if ((inf2.st_mode & S_IFMT) == S_IFDIR)
 			read_args_helper1_1(info, dirs);
 		else
 		{
@@ -43,20 +44,20 @@ void	read_args_helper1(t_info **info, t_args **head, t_node **dirs, t_node **all
 			(*info)->insert_func((char*)(all), (char*)info);
 			((*info)->list_len)++;
 		}
-	}	
+	}
 }
 
 void	read_args_helper2(t_info **info, t_node **dirs)
 {
-	t_node *all;
-	
+	t_node	*all;
+
 	all = *dirs;
 	while (*dirs)
 	{
 		(*info)->path_tbi = (*dirs)->name;
 		(*info)->ikhan = 0;
-		if((*info)->counter == 1)
-			ft_printf("%s:\n",(*info)->path_tbi);
+		if ((*info)->counter == 1)
+			ft_printf("%s:\n", (*info)->path_tbi);
 		read_function(dirs, info);
 		*dirs = (*dirs)->next;
 	}
