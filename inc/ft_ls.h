@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/27 15:48:57 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/07/21 01:15:26 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/21 03:28:29 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,7 @@ struct				s_info
 	int				lines_tbp;
 	int				cols_tbp;
 	int				ikhan;
+	int				counter;
 	t_func			insert_func;
 	t_func2			insert_arg_func;
 	t_func3			print_func;

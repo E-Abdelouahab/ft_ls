@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/16 13:34:30 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/07/21 00:52:54 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/21 02:31:10 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ t_node	***create_tab(t_node *all, t_info **info)
 		table[i % lines][i / lines] = tracker;
 		tracker = tracker->next;
 	}
-
 	return(table);
 }
 
@@ -90,7 +89,6 @@ void	f_print(t_node *head, t_info *info)
 	str = get_printf_str(info->max_len);
 	table = create_tab(head, &info);
 	i = 0;
-
 	while(i < info->lines_tbp)
 	{
 		j = 0;
@@ -101,9 +99,8 @@ void	f_print(t_node *head, t_info *info)
 			print_color(0, 0);
 		}
 		print_color(table[i][j]->type, table[i][j]->perm);
-		ft_printf("%s\n",table[i][j]->name);
+		ft_printf("%s\n",table[i++][j]->name);
 		print_color(0, 0);
-		i++;
 	}
 	free(str);
 	free_tab(table, info->lines_tbp);

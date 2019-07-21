@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 06:19:35 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/07/21 00:54:27 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/21 02:57:55 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,26 @@ void	print_type(unsigned short filemode)
 		ft_printf("s");
 	else if ((filemode & S_IFMT) == S_IFIFO)
 		ft_printf("p");
+}
+
+void	print_permissions_helper(unsigned short filemode)
+{
+	if (filemode & S_IXGRP)
+		ft_printf("x");
+	else
+		ft_printf("-");
+	if (filemode & S_IROTH)
+		ft_printf("r");
+	else
+		ft_printf("-");
+	if (filemode & S_IWOTH)
+		ft_printf("w");
+	else
+		ft_printf("-");
+	if (filemode & S_IXOTH)
+		ft_printf("x  ");
+	else
+		ft_printf("-  ");
 }
 
 void	print_permissions(unsigned short filemode)
@@ -53,20 +73,5 @@ void	print_permissions(unsigned short filemode)
 		ft_printf("w");
 	else
 		ft_printf("-");
-	if (filemode & S_IXGRP)
-		ft_printf("x");
-	else
-		ft_printf("-");
-	if (filemode & S_IROTH)
-		ft_printf("r");
-	else
-		ft_printf("-");
-	if (filemode & S_IWOTH)
-		ft_printf("w");
-	else
-		ft_printf("-");
-	if (filemode & S_IXOTH)
-		ft_printf("x  ");
-		else
-			ft_printf("-  ");
+	print_permissions_helper(filemode);
 }

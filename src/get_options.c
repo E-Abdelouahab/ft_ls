@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/11 12:46:31 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/07/16 22:12:54 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/21 02:38:39 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,32 @@ int in_str(char c, char *flag_str)
 	return(-1);
 }
 
+void	get_options_helper(char **argv, int i, t_info **info)
+{
+	int j;
+	int checker;
+
+	j = 1;
+	while (argv[i][j])
+	{
+		if ((checker = in_str(argv[i][j], FLAGS_STR)) >= 0)
+		{
+			if ((1 << checker) & FLAG_SCAP && !((*info)->flags & FLAG_T))
+				(*info)->flags |= FLAG_SCAP;
+			else if((1 << checker) & FLAG_T && !((*info)->flags & FLAG_SCAP))
+				(*info)->flags |= FLAG_T;
+			else
+				(*info)->flags |= (1 << checker);
+		}
+		else
+			usage_error(argv[i][j]);
+		j++;
+	}
+}
+
 int get_options(int argc, char **argv, t_info **info)
 {
 	int			i;
-	int			j;
-	int			checker;
 
 	i = 1;
 	(*info)->flags = 0;
@@ -43,24 +64,7 @@ int get_options(int argc, char **argv, t_info **info)
 			if (check_valid_opt(argv[i]) == 0)
 				return (i);
 			if (check_valid_opt(argv[i]) == 1)
-			{
-				j = 1;
-				while (argv[i][j])
-				{
-					if ((checker = in_str(argv[i][j], FLAGS_STR)) >= 0)
-					{
-						if ((1 << checker) & FLAG_SCAP && !((*info)->flags & FLAG_T))
-							(*info)->flags |= FLAG_SCAP;
-						else if((1 << checker) & FLAG_T && !((*info)->flags & FLAG_SCAP))
-							(*info)->flags |= FLAG_T;
-						else
-							(*info)->flags |= (1 << checker);
-					}
-					else
-						usage_error(argv[i][j]);
-					j++;
-				}
-			}
+				get_options_helper(argv, i, info);
 			i++;
 		}
 	}

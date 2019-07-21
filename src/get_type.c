@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 18:03:36 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/07/19 18:07:35 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/21 02:40:39 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,4 @@ int		get_type(int type)
 		return FIFO;
 	else
 		return UNKNOWN;
-	
 }

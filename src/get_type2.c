@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/18 19:36:06 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/07/19 18:07:33 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/21 02:40:53 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,4 @@ int		get_type2(mode_t st_mode)
 		return FIFO;
 	else
 		return UNKNOWN;
-	
 }

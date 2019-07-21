@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/27 15:29:36 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/07/19 22:47:51 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/21 03:44:17 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,5 @@ void	init_info(t_info **info)
 	(*info)->tracker = 0;
 	(*info)->ikhan = 1;
 	(*info)->print_total = 0;
+	(*info)->counter = 0;
 }

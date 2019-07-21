@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/10 23:33:05 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/07/20 23:29:40 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/21 02:54:52 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ int main(int ac, char **av)
 		return 0;
 	args = process_args(ac, av, &info);
 	read_args(&args, &info);
-	// if (info->path_tbi != NULL)
-	// 	free(info->path_tbi);
 	free(info);
 	return 0;
 }
