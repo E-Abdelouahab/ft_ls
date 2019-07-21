@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/19 16:18:43 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/07/19 22:27:38 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/21 00:54:27 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void handle_error2(char *name)
 {
-	printf("ft_ls: %s: %s\n\n", name, strerror(errno));
+	ft_printf("ft_ls: %s: %s\n\n", name, strerror(errno));
 }
 
 void	read_all(t_node **head, t_info **info, int tracker)
@@ -34,7 +34,7 @@ void	read_all(t_node **head, t_info **info, int tracker)
 		return;
 	}
 	if (tracker)
-		printf("%s:\n", (*head)->path);
+		ft_printf("%s:\n", (*head)->path);
 	(*info)->path_tbi = (*head)->path;
 	(*info)->list_len = 0;
 	(*info)->max_len = 0;
@@ -50,7 +50,7 @@ void	read_all(t_node **head, t_info **info, int tracker)
 	if (all)
 		(*info)->print_func(all, *info);
 	else
-		printf("\n");
+		ft_printf("\n");
 	if ((*info)->flags & FLAG_RCAP)
 	{
 		while (dirs)

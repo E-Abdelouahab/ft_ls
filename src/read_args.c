@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 17:16:30 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/07/20 23:28:17 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/21 00:54:27 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	read_args(t_args **head, t_info **info)
 	if (all)
 		(*info)->print_func(all, *info);
 	else
-		printf("\n");
+		ft_printf("\n");
 	free_nodes(all);
 	(*info)->print_total = 1;
 	(*info)->name_tbi = NULL;
@@ -73,7 +73,7 @@ void	read_args(t_args **head, t_info **info)
 		(*info)->path_tbi = dirs->name;
 		(*info)->ikhan = 0;
 		if(counter == 1)
-			printf("%s:\n",(*info)->path_tbi);
+			ft_printf("%s:\n",(*info)->path_tbi);
 		read_function(&dirs, info);
 		dirs = dirs->next;
 	}

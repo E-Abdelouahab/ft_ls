@@ -3,16 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rnbou <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: Invalid date        by ********          #+#    #+#             */
-/*   Updated: 2019/06/01 05:25:58 by ielmoudn         ###   ########.fr       */
+/*   Created: 2018/10/11 23:25:11 by rnbou             #+#    #+#             */
+/*   Updated: 2019/03/03 17:19:25 by rnbou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar(char c)
+int	ft_putchar(int c)
 {
-	ft_putchar_fd(c, 1);
+	static int	*counter;
+	int			i;
+	char		k;
+
+	k = (char)c;
+	if (counter == NULL)
+	{
+		counter = (int *)malloc(sizeof(int));
+		counter[0] = 0;
+	}
+	if (c != 300)
+	{
+		counter[0] += 1;
+		write(1, &k, 1);
+		i = counter[0];
+	}
+	else
+	{
+		i = counter[0];
+		free(counter);
+		counter = NULL;
+	}
+	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/28 21:41:17 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/06/28 21:42:02 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/21 00:54:27 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	print_args(t_args *args)
 
 	while ( current_node != NULL)
 	{
-		printf("%s\t", current_node->name);
+		ft_printf("%s\t", current_node->name);
 		current_node = current_node->next;
 	}
-		printf("\n\n");
+		ft_printf("\n\n");
 }

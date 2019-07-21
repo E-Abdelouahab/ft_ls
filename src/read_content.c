@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/19 01:11:00 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/07/20 23:41:06 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/21 00:54:27 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,15 @@ void	read_content(t_node **head, t_info **info, int tracker)
 	all = NULL;
 	tbf = NULL;
 	dir = opendir((*head)->path);
+	if (!((*head)->perm & S_IXUSR))
+		return;
 	if (!dir)
 	{
 		handle_error((*head)->name);
 		return;
 	}
 	if (tracker != 0)
-		printf("%s:\n", (*head)->path);
+		ft_printf("%s:\n", (*head)->path);
 	(*info)->path_tbi = (*head)->path;
 	(*info)->list_len = 0;
 	(*info)->max_len = 0;
@@ -51,7 +53,7 @@ void	read_content(t_node **head, t_info **info, int tracker)
 	if (all)
 		(*info)->print_func(all, *info);
 	else
-		printf("\n");
+		ft_printf("\n");
 	if (tbf != NULL)
 	free_nodes(tbf);
 	tbf = dirs;

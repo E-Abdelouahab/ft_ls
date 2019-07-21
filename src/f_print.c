@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/16 13:34:30 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/07/20 22:17:01 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/21 00:52:54 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,15 +97,15 @@ void	f_print(t_node *head, t_info *info)
 		while(table[i][j + 1] != NULL)
 		{
 			print_color(table[i][j]->type, table[i][j]->perm);
-			printf(str, table[i][j++]->name);
+			ft_printf(str, table[i][j++]->name);
 			print_color(0, 0);
 		}
 		print_color(table[i][j]->type, table[i][j]->perm);
-		printf("%s\n",table[i][j]->name);
+		ft_printf("%s\n",table[i][j]->name);
 		print_color(0, 0);
 		i++;
 	}
 	free(str);
 	free_tab(table, info->lines_tbp);
-	printf("\n");
+	ft_printf("\n");
 }

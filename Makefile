@@ -6,7 +6,7 @@
 #    By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/05 13:08:42 by ielmoudn          #+#    #+#              #
-#    Updated: 2019/07/20 22:09:24 by ielmoudn         ###   ########.fr        #
+#    Updated: 2019/07/21 01:14:18 by ielmoudn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,30 @@ FILENAMES = get_options.c\
 	get_type2.c\
 	read_args.c\
 	free_nodes.c\
-	free_args.c
+	free_args.c\
+	ft_printf.c\
+	ft_printf2.c\
+	ft_printf_base.c\
+	ft_printf_d.c\
+	ft_printf_f1.c\
+	ft_printf_f_int.c\
+	ft_printf_f_multiply.c\
+	ft_printf_p.c\
+	ft_printf_s.c\
+	ft_printf_ts.c\
+	ft_printf1.c\
+	ft_printf3.c\
+	ft_printf_c.c\
+	ft_printf_f.c\
+	ft_printf_f2.c\
+	ft_printf_f_int1.c\
+	ft_printf_f_multiply1.c\
+	ft_printf_pr.c\
+	ft_printf_td.c\
+	ft_printf_u.c\
+	helpers.c
+
+
 
 HEADER_FILE = ./inc/ft_ls.h
 SRC_DIR = ./src
@@ -73,7 +96,7 @@ DELAY = 0
 
 all : $(NAME)
 $(NAME): $(LIBFT) $(OBJ)
-	@echo "$(CC) $(_lYELLOW)$(FLAGS)$(_END) $(_lCYAN)$(OBJ)$(_END)\n$(_lGREEN)$(LIBRARIES)$(_END)   -I$(_RED)$(INC_DIR)$(_END)$(_RED)$(INCLUDES)$(_END) -o $(_lBLUE)$(NAME)$(_lEND)$(_RED)\n"
+	@echo "$(CC) $(_lYELLOW)$(FLAGS)$(_END) $(_lCYAN)$(OBJ)$(_END)\n$(_lGREEN) $(LIBRARIES)$(_END)   -I$(_RED)$(INC_DIR)$(_END)$(_RED)$(INCLUDES)$(_END) -o $(_lBLUE)$(NAME)$(_lEND)$(_RED)\n"
 	@$(CC) $(FLAGS) $(OBJ) $(LIBRARIES) $(INCLUDES) -o $(NAME)
 $(OBJ): $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c $(HEADER_FILE) | $(OBJ_DIR)
 	$(CC) $(FLAGS) -c $< -o $@ -I  $(INC_DIR) $(INCLUDES)

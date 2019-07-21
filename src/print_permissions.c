@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 06:19:35 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/07/17 11:52:55 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/21 00:54:27 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,58 +15,58 @@
 void	print_type(unsigned short filemode)
 {
 	if ((filemode & S_IFMT) == S_IFDIR)
-		printf("d");
+		ft_printf("d");
 	else if ((filemode & S_IFMT) == S_IFCHR)
-		printf("c");
+		ft_printf("c");
 	else if ((filemode & S_IFMT) == S_IFBLK)
-		printf("b");
+		ft_printf("b");
 	else if ((filemode & S_IFMT) == S_IFREG)
-		printf("-");
+		ft_printf("-");
 	else if ((filemode & S_IFMT) == S_IFLNK)
-		printf("l");
+		ft_printf("l");
 	else if ((filemode & S_IFMT) == S_IFSOCK)
-		printf("s");
+		ft_printf("s");
 	else if ((filemode & S_IFMT) == S_IFIFO)
-		printf("p");
+		ft_printf("p");
 }
 
 void	print_permissions(unsigned short filemode)
 {
 	print_type(filemode);
 	if (filemode & S_IRUSR)
-		printf("r");
+		ft_printf("r");
 	else
-		printf("-");
+		ft_printf("-");
 	if (filemode & S_IWUSR) 
-		printf("w");
+		ft_printf("w");
 	else
-		printf("-");
+		ft_printf("-");
 	if (filemode & S_IXUSR)
-		printf("x");
+		ft_printf("x");
 	else
-		printf("-");
+		ft_printf("-");
 	if (filemode & S_IRGRP)
-		printf("r");
+		ft_printf("r");
 	else
-		printf("-");
+		ft_printf("-");
 	if (filemode & S_IWGRP)
-		printf("w");
+		ft_printf("w");
 	else
-		printf("-");
+		ft_printf("-");
 	if (filemode & S_IXGRP)
-		printf("x");
+		ft_printf("x");
 	else
-		printf("-");
+		ft_printf("-");
 	if (filemode & S_IROTH)
-		printf("r");
+		ft_printf("r");
 	else
-		printf("-");
+		ft_printf("-");
 	if (filemode & S_IWOTH)
-		printf("w");
+		ft_printf("w");
 	else
-		printf("-");
+		ft_printf("-");
 	if (filemode & S_IXOTH)
-		printf("x  ");
+		ft_printf("x  ");
 		else
-			printf("-  ");
+			ft_printf("-  ");
 }

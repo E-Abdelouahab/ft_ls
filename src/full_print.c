@@ -6,7 +6,7 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/11 21:10:44 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/07/20 22:27:07 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/21 00:54:27 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,16 @@ void	get_time(time_t m_time)
 	if ((act_time - 15552000) > m_time)
 	{
 		tbf = ft_strsub(ctime(&m_time), 4, 7);
-		printf("%s ", tbf);
+		ft_printf("%s ", tbf);
 		free(tbf);
 		tbf = ft_strsub(ctime(&m_time), 20, 5);
-		printf("%d  ", ft_atoi(tbf));
+		ft_printf("%d  ", ft_atoi(tbf));
 		free(tbf);
 	}
 	else
 	{
 		tbf = ft_strsub(ctime(&m_time), 4, 12);
-		printf("%s  ", tbf);
+		ft_printf("%s  ", tbf);
 		free(tbf);
 	}
 }
@@ -52,7 +52,7 @@ void	readable(off_t size)
 		temp = temp / 1024.;
 		i++;
 	}
-	printf("%8.1lf%-5c ", temp, units[i]);
+	ft_printf("%8.1lf%-5c ", temp, units[i]);
 }
 
 long	get_total(t_node *head)
@@ -73,7 +73,7 @@ void	print_size(off_t size, int perms)
 	if(perms & FLAG_H)
 		readable(size);
 	else
-		printf("%10lld ", size);
+		ft_printf("%10lld ", size);
 }
 
 void	full_print(t_node *head, t_info *info)
@@ -85,8 +85,8 @@ void	full_print(t_node *head, t_info *info)
 	if(info->print_total == 1)
 	{
 		total = get_total(current);
-		printf("total %ld\n", total);
+		ft_printf("total %ld\n", total);
 	}
 	full_print_node(head, info);
-	printf("\n");
+	ft_printf("\n");
 }

@@ -6,26 +6,27 @@
 /*   By: ielmoudn <ielmoudn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/27 15:48:57 by ielmoudn          #+#    #+#             */
-/*   Updated: 2019/07/20 13:06:03 by ielmoudn         ###   ########.fr       */
+/*   Updated: 2019/07/21 01:15:26 by ielmoudn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_LS
 # define FT_LS
+#include "../src/ft_printf.h"
 #include "../libs/libft/libft.h"
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <dirent.h>
 #include <stdlib.h>
-#include <stdio.h>
 #include <string.h>
-#include <unistd.h>
 #include <stdbool.h>
+#include <stdio.h>
 #include <errno.h>
 #include <pwd.h>
 #include <sys/types.h>
 #include <grp.h>
 #include <time.h>
+#include <stdarg.h>
 
 
 // boolean values
